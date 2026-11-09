@@ -11,7 +11,7 @@
 <link rel="icon" href="icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="Hours">
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
@@ -552,6 +552,33 @@ select{display:block;width:100%;margin-top:6px;background:var(--field);border:1p
 .auth{max-width:400px;margin:0 auto;padding:56px 22px 40px;overflow-y:auto}
 .auth h1{font-family:var(--display);font-size:42px;font-weight:700;margin:0 0 8px;line-height:1.05}
 .auth .sub{margin:0 0 22px;font-size:15px}
+.foot{background:rgba(27,29,32,.74)!important;-webkit-backdrop-filter:blur(22px) saturate(150%);backdrop-filter:blur(22px) saturate(150%);border-top:1px solid rgba(255,255,255,.07);margin-top:16px}
+#weekDlg .foot,#fyDlg .foot{background:rgba(23,24,25,.8)!important;border-radius:18px 18px 0 0}
+.wheels.two-w{grid-template-columns:1.3fr 1fr}
+.wheels.two-w .wi{font-size:20px}
+.crop-wrap{display:grid;place-items:center;padding:22px 0;border-radius:18px;background:repeating-conic-gradient(#2a2d31 0 25%,#212427 0 50%) 0 0/18px 18px}
+.crop-box{position:relative;width:min(280px,74vw);background:#fff;overflow:hidden;touch-action:none;border-radius:16px;box-shadow:0 0 0 2px var(--alt),0 12px 30px -10px rgba(0,0,0,.7);cursor:grab}
+.crop-box.round{border-radius:50%}
+.crop-box img{position:absolute;left:0;top:0;transform-origin:0 0;max-width:none;width:auto;height:auto;pointer-events:none;-webkit-user-select:none;user-select:none}
+.zoom-row{display:flex;align-items:center;gap:12px;margin-top:16px;color:var(--muted);font-size:20px;font-weight:600}
+.zoom-row input{flex:1;margin:0;min-height:0;padding:0;border:none;background:none;box-shadow:none;-webkit-appearance:auto;appearance:auto;accent-color:var(--alt)}
+.ti-year{font-size:12px;font-weight:700;color:var(--muted);margin:12px 4px 2px;letter-spacing:.4px}
+.ti-year:first-child{margin-top:4px}
+.ti{display:flex;align-items:center;gap:4px;margin:6px 0}
+.ti-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;min-height:48px;padding:0 14px;border-radius:12px;border:1px solid var(--glass-line);background:rgba(255,255,255,.04);cursor:pointer;text-align:left;color:var(--ink)}
+.ti-main:active{background:rgba(255,255,255,.09)}
+.ti-main .tn{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-weight:700;font-size:14px;color:var(--alt);background:rgba(81,149,192,.14)}
+.ti-main .tx2{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px;padding:7px 0}
+.swipe.lifting{background:transparent}.swipe.lifting::after{display:none}
+.ti-main .tr{min-width:0;font-weight:600;font-size:15px;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ti-main .tw{flex:none;font-size:12.5px;color:var(--muted)}
+.ti-sw{border-top:none!important;border-radius:12px;margin:6px 0}
+.ti-sw .ti-main{position:relative;z-index:1;width:100%;background:#2A2D31;touch-action:pan-y}
+.ti-x:active{color:var(--red)}
+.drag-ghost{position:fixed!important;z-index:50;margin:0;background:var(--solid)!important;border:1.5px solid var(--alt)!important;border-radius:14px;box-shadow:0 18px 40px -10px rgba(0,0,0,.8);transform:scale(1.03);pointer-events:none;opacity:.97}
+.entry.dragging{opacity:.3}
+.dcard.drop{border-color:var(--alt);border-style:solid;box-shadow:0 0 0 2px rgba(81,149,192,.45);background:rgba(81,149,192,.1)}
+#wkBody .entry{-webkit-touch-callout:none}
 .toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(8px);background:rgba(233,228,216,.96);color:#171819;padding:10px 18px;border-radius:14px;font-weight:600;font-size:14.5px;max-width:calc(100% - 32px);z-index:30;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;box-shadow:var(--shadow-lg)}
 .toast.show{opacity:1;transform:translateX(-50%)}
 @media (prefers-reduced-motion:reduce){.pulse,dialog[open]{animation:none}.toast,.seg button,.bubble,.orb{transition:none}}
@@ -659,7 +686,7 @@ select{display:block;width:100%;margin-top:6px;background:var(--field);border:1p
       </div>
       <div class="tp" id="timePanel" hidden>
         <div class="tp-head"><strong id="tpTitle">Start</strong><span class="acts"><button type="button" class="text-btn" data-act="tpNow">Now</button><button type="button" class="text-btn" data-act="tpDone">Done</button></span></div>
-        <div class="wheels"><div class="wheel" id="wH"></div><div class="wheel" id="wM"></div><div class="wheel" id="wA"></div></div>
+        <div class="wheels two-w"><div class="wheel" id="wH"></div><div class="wheel" id="wM"></div></div>
       </div>
       <div class="two">
         <div class="lbl">Break
@@ -714,6 +741,31 @@ select{display:block;width:100%;margin-top:6px;background:var(--field);border:1p
 </dialog>
 
 <!-- Calendar -->
+<dialog id="cropDlg" aria-labelledby="cropTitle">
+  <div class="sheet">
+    <div class="grabber"></div>
+    <div class="sheet-title"><h2 id="cropTitle">Adjust Logo</h2><button type="button" class="x" data-act="cropCancel" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <p class="small-muted" style="margin:-6px 0 14px;font-size:14px">Drag to move. Pinch or use the slider to zoom.</p>
+    <div class="crop-wrap"><div class="crop-box" id="cropBox"></div></div>
+    <div class="zoom-row"><span aria-hidden="true">−</span><input type="range" id="cropZoom" min="0.3" max="5" step="0.01" value="1" aria-label="Zoom"><span aria-hidden="true">+</span></div>
+    <button type="button" class="text-btn" data-act="cropReset" style="margin:6px auto 0;display:flex">Reset</button>
+  </div>
+  <div class="foot"><button type="button" class="btn glass" data-act="cropCancel">Cancel</button><button type="button" class="btn pri" data-act="cropUse">Use Logo</button></div>
+</dialog>
+<dialog id="rangeDlg" aria-labelledby="rgTitle">
+  <div class="sheet">
+    <div class="grabber"></div>
+    <div class="sheet-title"><h2 id="rgTitle">Add Term</h2><button type="button" class="x" data-act="closeRange" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <div class="two">
+      <div class="lbl" id="rgSLbl">Start<button type="button" class="field-btn" data-rpick="s" aria-expanded="false"><span id="rgS"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></button></div>
+      <div class="lbl" id="rgEndWrap">End<button type="button" class="field-btn" data-rpick="e" aria-expanded="false"><span id="rgE"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></button></div>
+    </div>
+    <div class="cal" id="calRS" hidden></div>
+    <div class="cal" id="calRE" hidden></div>
+    <p class="small-muted" id="rgInfo" style="text-align:center;margin:0 0 4px"></p>
+  </div>
+  <div class="foot"><button type="button" class="btn glass" data-act="closeRange">Cancel</button><button type="button" class="btn pri" data-act="rgSave">Save</button></div>
+</dialog>
 <dialog id="impDlg" aria-labelledby="impTitle">
   <div class="sheet" style="padding-bottom:calc(20px + env(safe-area-inset-bottom,0px))">
     <div class="grabber"></div>
@@ -1364,8 +1416,8 @@ function renderWeekSheet(){
   const days = [0,1,2,3,4,5,6].map(i => {
     const dms = addDays(ws, i), ds = toDateInput(dms), items = list.filter(e => toDateInput(e.start) === ds);
     const add = `<button type="button" class="dadd" data-addday="${ds}" aria-label="Add a shift on ${esc(dayFmt.format(dms))}">${ICON_PLUS}</button>`;
-    if(!items.length) return `<div class="dcard off"><div class="dhead"><h3>${dayFmt.format(dms)}</h3>${add}</div></div>`;
-    return `<div class="dcard"><div class="dhead"><h3>${dayFmt.format(dms)}</h3><span class="dh">${fmtH(sumHours(items))} h</span>${add}</div>${items.map(e => entryRow(e, im)).join('')}</div>`;
+    if(!items.length) return `<div class="dcard off" data-dday="${ds}"><div class="dhead"><h3>${dayFmt.format(dms)}</h3>${add}</div></div>`;
+    return `<div class="dcard" data-dday="${ds}"><div class="dhead"><h3>${dayFmt.format(dms)}</h3><span class="dh">${fmtH(sumHours(items))} h</span>${add}</div>${items.map(e => entryRow(e, im)).join('')}</div>`;
   }).join('');
   $('#wkBody').innerHTML = `<div class="wsum"><div class="left"><span class="tot-h">${fmtH(sumHours(list))}<small>h</small></span>${isEmp(cur) ? weekBalStatus(ws, list) : weekInvStatus(list, im)}</div>${moneyHtml(sumPay(list))}</div>${days}`;
   const btn = $('#invWeekBtn');
@@ -1451,7 +1503,7 @@ function renderCal(id){
 
 /* ---------- time wheels ---------- */
 const IH = 44;
-const HOURS = Array.from({length:12}, (_, i) => ({v:i+1, label:String(i+1)}));
+const HOURS = Array.from({length:24}, (_, h) => ({v:h, label:`${h % 12 || 12} ${h < 12 ? 'am' : 'pm'}`}));
 const MINS = Array.from({length:12}, (_, i) => ({v:i*5, label:pad(i*5)}));
 const AMPM = [{v:'am', label:'am'}, {v:'pm', label:'pm'}];
 const idxOf = el => Math.max(0, Math.min(el._items.length - 1, Math.round(el.scrollTop / IH)));
@@ -1469,16 +1521,15 @@ function wheel(el, items, onPick){
   el.addEventListener('click', e => { const w = e.target.closest('.wi'); if(w){ el._user = true; el.scrollTo({top:Number(w.dataset.i) * IH, behavior: reduced ? 'auto' : 'smooth'}); } });
 }
 function setWheel(el, i){ el._user = false; el.scrollTop = i * IH; markWheel(el, i); }
-const wH = $('#wH'), wM = $('#wM'), wA = $('#wA');
+const wH = $('#wH'), wM = $('#wM');
 let tpTarget = null; // 'start' | 'end'
 function getHM(){ return form[tpTarget].value.split(':').map(Number); }
 function setHM(h, m){ form[tpTarget].value = `${pad(h)}:${pad(m)}`; paintTimes(); updateSummary(); }
-wheel(wH, HOURS, v => { const [h, m] = getHM(); setHM((v % 12) + (h >= 12 ? 12 : 0), m); });
+wheel(wH, HOURS, v => { const [, m] = getHM(); setHM(v, m); });
 wheel(wM, MINS, v => { const [h] = getHM(); setHM(h, v); });
-wheel(wA, AMPM, v => { const [h, m] = getHM(); setHM((h % 12) + (v === 'pm' ? 12 : 0), m); });
 function syncWheels(){
   const [h, m] = getHM();
-  setWheel(wH, (h % 12 || 12) - 1); setWheel(wM, Math.min(11, Math.round(m / 5))); setWheel(wA, h >= 12 ? 1 : 0);
+  setWheel(wH, h); setWheel(wM, Math.min(11, Math.round(m / 5)));
 }
 
 /* ---------- shift sheet ---------- */
@@ -1643,17 +1694,10 @@ coDlg.addEventListener('paste', ev => {
   if(f){ ev.preventDefault(); useLogoFile(f); }
 });
 async function useLogoFile(f){
-  try{
-    if(assets){
-      const blob = await shrinkImage(f, 320);
-      $('#logoBtn').style.opacity = '.5';
-      try{ const r = await assets.upload(blob, {type:'image/png'}); coEdit.logo = r.id; coEdit.logoData = null; }
-      finally{ $('#logoBtn').style.opacity = ''; }
-    }else{
-      coEdit.logoData = await blobToDataUrl(await shrinkImage(f, 160)); coEdit.logo = null;
-    }
-    paintLogo();
-  }catch(e){ toast(e && e.code === 'not_granted' ? 'Logos can’t be uploaded here' : 'Couldn’t use that image'); }
+  const blob = await openCrop(f, {aspect: 1, round: true, out: [320, 320], title: 'Adjust Logo'});
+  if(!blob) return;
+  try{ const r = await storeLogoBlob(blob, $('#logoBtn')); coEdit.logo = r.logo; coEdit.logoData = r.logoData; paintLogo(); }
+  catch(e){ toast('Couldn’t use that image'); }
 }
 function loadImg(file){ return new Promise((res, rej) => { const url = URL.createObjectURL(file), im = new Image(); im.onload = () => { res(im); URL.revokeObjectURL(url); }; im.onerror = () => { rej(new Error('bad image')); URL.revokeObjectURL(url); }; im.src = url; }); }
 async function shrinkImage(file, max){
@@ -2265,16 +2309,6 @@ function renderBalance(){
     <div class="card chart"><h3>Balance Over Time</h3>${balChart(info)}<p class="legend"><i class="lg-line"></i>Balance <i class="lg-dash"></i>Forecast <i class="lg-hol"></i>Holidays</p></div>`;
 }
 /* term date rows in the company sheet */
-function termRowHtml(t, i){
-  return `<div class="term-row"><span class="tn">Term ${i + 1}</span><div class="tdates"><input type="date" class="ts" value="${esc(t.start || '')}" aria-label="Term ${i + 1} start"><input type="date" class="te" value="${esc(t.end || '')}" aria-label="Term ${i + 1} end"></div><button type="button" class="rm" data-act="rmTerm" aria-label="Remove term">×</button></div>`;
-}
-function renderTerms(list){
-  $('#termList').innerHTML = list.map(termRowHtml).join('');
-  const n = list.filter(t => t.start && t.end).length;
-  $('#termCnt').textContent = n ? `${n} ${n === 1 ? 'term' : 'terms'}` : 'None';
-}
-function readTermsRaw(){ return [...document.querySelectorAll('#termList .term-row')].map(r => ({start: r.querySelector('.ts').value, end: r.querySelector('.te').value})); }
-function readTerms(){ return readTermsRaw().filter(t => t.start && t.end && t.start <= t.end).sort((a, b) => a.start < b.start ? -1 : 1); }
 function paintKind(){
   document.querySelectorAll('#kindSeg [data-kind]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.kind === coEdit.kind)));
   const emp = coEdit.kind === 'employer';
@@ -2284,9 +2318,6 @@ function paintKind(){
 function paintDays(){ document.querySelectorAll('#daySeg [data-wd]').forEach(b => b.setAttribute('aria-pressed', String((coEdit.workDays || []).includes(Number(b.dataset.wd))))); }
 function paintSalaryHint(){ const v = Number(coForm.salary.value); $('#salaryHint').textContent = v > 0 ? `About ${money0.format(v / 26)} a fortnight` : ''; }
 coForm.salary.addEventListener('input', paintSalaryHint);
-function renderPh(list){ const n = list.filter(Boolean).length; $('#phCnt').textContent = n ? String(n) : 'None'; $('#phList').innerHTML = list.map(d => `<div class="ph-row"><input type="date" class="ph" value="${esc(d)}" aria-label="Public holiday"><button type="button" class="rm" data-act="rmPh" aria-label="Remove">×</button></div>`).join(''); }
-function readPhRaw(){ return [...document.querySelectorAll('#phList .ph')].map(i => i.value); }
-function readPh(){ return [...new Set(readPhRaw().filter(Boolean))].sort(); }
 /* Barker College staff dates from barker.college/about-barker/term-dates (staff days included); public holidays that fall in term */
 const BARKER = {
   terms:[['2026-01-27','2026-04-02'],['2026-04-20','2026-06-26'],['2026-07-20','2026-09-25'],['2026-10-12','2026-12-04'],
@@ -2577,7 +2608,9 @@ function paintMeLogo(){
   $('#meLogoRemove').hidden = !src;
 }
 async function useMeLogo(f){
-  try{ meLogo = await storeLogo(f, $('#meLogoBtn'), 700); paintMeLogo(); }
+  const blob = await openCrop(f, {aspect: 2, round: false, out: [640, 320], title: 'Adjust Your Logo'});
+  if(!blob) return;
+  try{ meLogo = await storeLogoBlob(blob, $('#meLogoBtn')); paintMeLogo(); }
   catch(e){ toast(e && e.code === 'not_granted' ? 'Logos can’t be uploaded here' : 'Couldn’t use that image'); }
 }
 $('#meLogoBtn').addEventListener('click', () => $('#meLogoFile').click());
@@ -2715,6 +2748,9 @@ document.addEventListener('click', async ev => {
   const eg = t.closest('[data-evgo]'); if(eg){ const cid = eg.dataset.evcid; if(cid && known(cid)) openCalendar(eg.dataset.evgo, cid); else if(eg.dataset.evid) openEvent(events().find(e => e.id === eg.dataset.evid)); return; }
   const tabBtn = t.closest('#seg [data-tab]'); if(tabBtn){ goTab(Number(tabBtn.dataset.tab)); return; }
   const coItem = t.closest('[data-co]'); if(coItem){ openCoEditor(company(coItem.dataset.co), true); return; }
+  const trm = t.closest('[data-term]'); if(trm){ openRange('term', Number(trm.dataset.term)); return; }
+  const phb = t.closest('[data-ph]'); if(phb){ openRange('ph', Number(phb.dataset.ph)); return; }
+  const rp = t.closest('[data-rpick]'); if(rp){ if(rp.getAttribute('aria-expanded') === 'true') closeRPicks(); else openRPick(rp.dataset.rpick); return; }
   const calEl = t.closest('.cal');
   if(calEl){
     const day = t.closest('[data-day]'); if(day){ cals[calEl.id].set(day.dataset.day); return; }
@@ -2795,10 +2831,15 @@ document.addEventListener('click', async ev => {
     renderPh([...new Set(readPhRaw().filter(Boolean).concat(BARKER.holidays))].sort());
     toast('Barker term dates added');
   }
-  else if(act === 'addPh'){ const l = readPhRaw(); l.push(''); renderPh(l); }
-  else if(act === 'rmPh'){ b.closest('.ph-row').remove(); renderPh(readPhRaw()); }
-  else if(act === 'addTerm'){ const l = readTermsRaw(); l.push({start:'', end:''}); renderTerms(l); }
-  else if(act === 'rmTerm'){ b.closest('.term-row').remove(); renderTerms(readTermsRaw()); }
+  else if(act === 'addPh') openRange('ph');
+  else if(act === 'rmPh'){ const l = readPhRaw(); l.splice(Number(b.dataset.i), 1); renderPh(l); }
+  else if(act === 'addTerm') openRange('term');
+  else if(act === 'rmTerm'){ const l = readTermsRaw(); l.splice(Number(b.dataset.i), 1); renderTerms(l); }
+  else if(act === 'rgSave') saveRange();
+  else if(act === 'closeRange') rangeDlg.close();
+  else if(act === 'cropCancel') cropDone(false);
+  else if(act === 'cropUse') cropDone(true);
+  else if(act === 'cropReset') cropFit();
   else if(act === 'editCo'){ const c = company(cur); if(c) openCoEditor(c, false); }
   else if(act === 'fy' || act === 'openFY') openFY();
   else if(act === 'closeFY') fyDlg.close();
@@ -3104,6 +3145,225 @@ swipeRows($('#dayList'), '.trow', el => deleteEventUndo(el.dataset.ev));
 dayDlg.addEventListener('click', e => { if(e.target === dayDlg) dayDlg.close(); });
 evDlg.addEventListener('click', e => { if(e.target === evDlg) evDlg.close(); });
 
+/* ---------- crop a logo before saving: drag to move, pinch or slide to zoom ---------- */
+const cropDlg = $('#cropDlg'), cropBox = $('#cropBox'), cropZoom = $('#cropZoom');
+let crop = null;
+function cropApply(){
+  if(!crop) return;
+  const s = crop.base * crop.z;
+  crop.img.style.transform = `translate(${crop.x}px, ${crop.y}px) scale(${s})`;
+}
+function cropFit(){
+  const bw = cropBox.clientWidth, bh = cropBox.clientHeight, iw = crop.img.naturalWidth, ih = crop.img.naturalHeight;
+  crop.base = Math.min(bw / iw, bh / ih) * (crop.round ? 0.78 : 0.92);
+  crop.z = 1; cropZoom.value = 1;
+  crop.x = (bw - iw * crop.base) / 2; crop.y = (bh - ih * crop.base) / 2;
+  cropApply();
+}
+/* zoom about a point in the box so whatever is under your fingers stays put */
+function cropZoomTo(z, cx, cy){
+  const old = crop.base * crop.z; z = Math.max(0.3, Math.min(5, z));
+  const s = crop.base * z;
+  crop.x = cx - (cx - crop.x) * s / old; crop.y = cy - (cy - crop.y) * s / old;
+  crop.z = z; cropZoom.value = z; cropApply();
+}
+function openCrop(file, opts){
+  return new Promise(async resolve => {
+    let im;
+    try{ im = await loadImg(file); }catch(e){ toast('Couldn’t use that image'); resolve(null); return; }
+    cropBox.innerHTML = ''; cropBox.appendChild(im);
+    cropBox.classList.toggle('round', !!opts.round);
+    cropBox.style.aspectRatio = String(opts.aspect);
+    crop = {img: im, round: !!opts.round, out: opts.out, resolve, x: 0, y: 0, z: 1, base: 1};
+    $('#cropTitle').textContent = opts.title || 'Adjust Logo';
+    showSheet(cropDlg);
+    requestAnimationFrame(cropFit);
+  });
+}
+function cropDone(useIt){
+  if(!crop) return;
+  const c = crop; crop = null;
+  if(!useIt){ cropDlg.close(); c.resolve(null); return; }
+  const [ow, oh] = c.out, k = ow / cropBox.clientWidth, s = c.base * c.z;
+  const cv = document.createElement('canvas'); cv.width = ow; cv.height = oh;
+  const cx = cv.getContext('2d'); cx.imageSmoothingQuality = 'high';
+  cx.setTransform(k, 0, 0, k, 0, 0);
+  cx.drawImage(c.img, c.x, c.y, c.img.naturalWidth * s, c.img.naturalHeight * s);
+  cropDlg.close();
+  cv.toBlob(b => c.resolve(b), 'image/png');
+}
+cropDlg.addEventListener('close', () => { if(crop){ const c = crop; crop = null; c.resolve(null); } });
+cropZoom.addEventListener('input', () => { if(crop) cropZoomTo(Number(cropZoom.value), cropBox.clientWidth / 2, cropBox.clientHeight / 2); });
+(() => {
+  const pts = new Map(); let last = null;
+  const mid = () => { const p = [...pts.values()]; return {x: (p[0].x + p[1].x) / 2, y: (p[0].y + p[1].y) / 2, d: Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y)}; };
+  cropBox.addEventListener('pointerdown', e => { if(!crop) return; cropBox.setPointerCapture(e.pointerId); pts.set(e.pointerId, {x: e.clientX, y: e.clientY}); last = pts.size === 2 ? mid() : null; });
+  cropBox.addEventListener('pointermove', e => {
+    if(!crop || !pts.has(e.pointerId)) return;
+    const prev = pts.get(e.pointerId); pts.set(e.pointerId, {x: e.clientX, y: e.clientY});
+    if(pts.size === 1){ crop.x += e.clientX - prev.x; crop.y += e.clientY - prev.y; cropApply(); }
+    else if(pts.size === 2 && last){
+      const m = mid(), r = cropBox.getBoundingClientRect();
+      crop.x += m.x - last.x; crop.y += m.y - last.y;
+      cropZoomTo(crop.z * (m.d / Math.max(1, last.d)), m.x - r.left, m.y - r.top);
+      last = m;
+    }
+  });
+  const up = e => { pts.delete(e.pointerId); last = pts.size === 2 ? mid() : null; };
+  cropBox.addEventListener('pointerup', up); cropBox.addEventListener('pointercancel', up);
+  cropBox.addEventListener('wheel', e => { if(!crop) return; e.preventDefault(); const r = cropBox.getBoundingClientRect(); cropZoomTo(crop.z * (e.deltaY < 0 ? 1.08 : 0.92), e.clientX - r.left, e.clientY - r.top); }, {passive:false});
+})();
+async function storeLogoBlob(blob, btn){
+  if(assets){
+    btn.style.opacity = '.5';
+    try{ const r = await assets.upload(blob, {type:'image/png'}); return {logo:r.id, logoData:null}; }
+    finally{ btn.style.opacity = ''; }
+  }
+  return {logo:null, logoData: await blobToDataUrl(blob)};
+}
+
+/* ---------- term dates and public holidays: tidy rows, edited with the calendar ---------- */
+const rangeDlg = $('#rangeDlg');
+let rg = null;
+const yFmt = new Intl.DateTimeFormat('en-AU', {day:'numeric', month:'short'});
+function rangeText(s, e){
+  const a = new Date(s), b = new Date(e);
+  return a.getFullYear() === b.getFullYear() ? `${yFmt.format(a)} – ${yFmt.format(b)}` : `${longFmt.format(a)} – ${longFmt.format(b)}`;
+}
+function renderTerms(list){
+  coEdit.terms = (list || []).filter(t => t && t.start && t.end).map(t => ({start:t.start, end:t.end})).sort((a, b) => a.start < b.start ? -1 : 1);
+  let html = '', yr = null, n = 0;
+  coEdit.terms.forEach((t, i) => {
+    const s = parseDate(t.start), e = parseDate(t.end), y = new Date(s).getFullYear();
+    if(y !== yr){ yr = y; n = 0; html += `<p class="ti-year">${y}</p>`; }
+    n++;
+    const wks = Math.max(1, Math.round((e - startOfWeek(s)) / (7 * 864e5)));
+    html += `<div class="swipe ti-sw" data-label="Delete"><button type="button" class="ti-main" data-term="${i}"><span class="tn">T${n}</span><span class="tx2"><span class="tr">${rangeText(s, e)}</span><span class="tw">Term ${n}, ${wks} weeks</span></span></button></div>`;
+  });
+  $('#termList').innerHTML = html || '<p class="empty" style="padding:8px 4px">No terms yet</p>';
+  const c = coEdit.terms.length; $('#termCnt').textContent = c ? `${c} ${c === 1 ? 'term' : 'terms'}` : 'None';
+}
+function readTermsRaw(){ return (coEdit.terms || []).slice(); }
+function readTerms(){ return readTermsRaw(); }
+function renderPh(list){
+  coEdit.holidays = [...new Set((list || []).filter(Boolean))].sort();
+  let html = '', yr = null;
+  coEdit.holidays.forEach((d, i) => {
+    const ms = parseDate(d), y = new Date(ms).getFullYear();
+    if(y !== yr){ yr = y; html += `<p class="ti-year">${y}</p>`; }
+    html += `<div class="swipe ti-sw" data-label="Delete"><button type="button" class="ti-main" data-ph="${i}"><span class="tr">${dayFmt.format(ms)}</span></button></div>`;
+  });
+  $('#phList').innerHTML = html || '<p class="empty" style="padding:8px 4px">None added</p>';
+  const c = coEdit.holidays.length; $('#phCnt').textContent = c ? String(c) : 'None';
+}
+function readPhRaw(){ return (coEdit.holidays || []).slice(); }
+function readPh(){ return readPhRaw(); }
+makeCal('calRS', () => rg ? rg.s : toDateInput(Date.now()), ds => { rg.s = ds; if(rg.mode === 'term' && rg.e < rg.s) rg.e = rg.s; closeRPicks(); paintRange(); if(rg.mode === 'term') openRPick('e'); }, () => new Set());
+makeCal('calRE', () => rg ? rg.e : toDateInput(Date.now()), ds => { rg.e = ds; if(rg.s > rg.e) rg.s = rg.e; closeRPicks(); paintRange(); }, () => new Set());
+function closeRPicks(){ ['calRS', 'calRE'].forEach(id => { $('#' + id).hidden = true; }); document.querySelectorAll('[data-rpick]').forEach(b => b.setAttribute('aria-expanded', 'false')); }
+function openRPick(w){ closeRPicks(); document.querySelector(`[data-rpick="${w}"]`).setAttribute('aria-expanded', 'true'); openCal(w === 's' ? 'calRS' : 'calRE'); }
+function paintRange(){
+  $('#rgS').textContent = longFmt.format(parseDate(rg.s)); $('#rgE').textContent = longFmt.format(parseDate(rg.e));
+  if(rg.mode === 'term'){ const w = Math.max(1, Math.round((parseDate(rg.e) - startOfWeek(parseDate(rg.s))) / (7 * 864e5))); $('#rgInfo').textContent = `${w} ${w === 1 ? 'week' : 'weeks'}`; }
+  else $('#rgInfo').textContent = '';
+}
+function openRange(mode, i){
+  if(mode === 'term'){
+    const terms = coEdit.terms || [], t = i != null ? terms[i] : null;
+    let s, e;
+    if(t){ s = t.start; e = t.end; }
+    else{
+      const lastT = terms[terms.length - 1], base = lastT ? addDays(parseDate(lastT.end), 17) : dayStart(Date.now());
+      s = toDateInput(startOfWeek(base)); e = toDateInput(addDays(parseDate(s), 9 * 7 + 4));
+    }
+    rg = {mode, i: i != null ? i : null, s, e};
+    $('#rgTitle').textContent = t ? 'Edit Term' : 'Add Term'; $('#rgEndWrap').hidden = false; $('#rgSLbl').firstChild.textContent = 'Start';
+  }else{
+    const d = i != null ? coEdit.holidays[i] : toDateInput(Date.now());
+    rg = {mode, i: i != null ? i : null, s: d, e: d};
+    $('#rgTitle').textContent = i != null ? 'Edit Public Holiday' : 'Add Public Holiday'; $('#rgEndWrap').hidden = true; $('#rgSLbl').firstChild.textContent = 'Date';
+  }
+  closeRPicks(); paintRange(); showSheet(rangeDlg); openRPick('s');
+}
+function saveRange(){
+  if(rg.mode === 'term'){
+    const l = readTermsRaw(), v = {start: rg.s, end: rg.e};
+    if(rg.i != null) l[rg.i] = v; else l.push(v);
+    renderTerms(l);
+  }else{
+    const l = readPhRaw();
+    if(rg.i != null) l[rg.i] = rg.s; else l.push(rg.s);
+    renderPh(l);
+  }
+  rangeDlg.close();
+}
+rangeDlg.addEventListener('click', e => { if(e.target === rangeDlg) rangeDlg.close(); });
+/* swipe a term or public holiday left to remove it (Undo puts it back) */
+swipeRows($('#termList'), '.ti-main', el => {
+  const before = readTermsRaw(), l = before.slice(); l.splice(Number(el.dataset.term), 1); renderTerms(l);
+  toastUndo('Term removed', () => renderTerms(before));
+});
+swipeRows($('#phList'), '.ti-main', el => {
+  const before = readPhRaw(), l = before.slice(); l.splice(Number(el.dataset.ph), 1); renderPh(l);
+  toastUndo('Public holiday removed', () => renderPh(before));
+});
+
+/* ---------- move a shift to another day: hold it, then drag onto the day ---------- */
+(() => {
+  const box = $('#wkBody');
+  let timer = null, drag = null, sx = 0, sy = 0, raf = 0, lastY = 0, suppress = false;
+  const end = () => { clearTimeout(timer); timer = null; };
+  function start(row, x, y){
+    const r = row.getBoundingClientRect(), g = row.cloneNode(true);
+    g.className = 'entry drag-ghost'; g.style.width = r.width + 'px'; g.style.left = r.left + 'px'; g.style.top = r.top + 'px';
+    weekDlg.appendChild(g);
+    row.classList.add('dragging'); if(row.parentElement.classList.contains('swipe')) row.parentElement.classList.add('lifting');
+    drag = {row, id: row.dataset.edit, ghost: g, off: y - r.top, left: r.left, over: null};
+    if(navigator.vibrate) navigator.vibrate(12);
+    lastY = y; loop();
+  }
+  function loop(){
+    if(!drag) return;
+    if(lastY < 110) weekDlg.scrollTop -= 9; else if(lastY > innerHeight - 140) weekDlg.scrollTop += 9;
+    raf = requestAnimationFrame(loop);
+  }
+  function move(x, y){
+    lastY = y;
+    drag.ghost.style.top = (y - drag.off) + 'px';
+    drag.ghost.style.display = 'none';
+    const el = document.elementFromPoint(x, y), day = el && el.closest('[data-dday]');
+    drag.ghost.style.display = '';
+    if(drag.over && drag.over !== day) drag.over.classList.remove('drop');
+    drag.over = day; if(day) day.classList.add('drop');
+  }
+  async function finish(){
+    cancelAnimationFrame(raf);
+    const d = drag; drag = null;
+    d.ghost.remove(); d.row.classList.remove('dragging'); if(d.row.parentElement) d.row.parentElement.classList.remove('lifting'); if(d.over) d.over.classList.remove('drop');
+    suppress = true; setTimeout(() => { suppress = false; }, 400);
+    const e = E.find(x => x.id === d.id); if(!e || !d.over) return;
+    const target = d.over.dataset.dday, days = Math.round((parseDate(target) - dayStart(e.start)) / 864e5);
+    if(!days) return;
+    const {id, ...body} = e, before = Object.assign({}, body);
+    await putEntry(id, Object.assign({}, body, {start: addDays(e.start, days), end: addDays(e.end, days), updatedAt: Date.now()}));
+    toastUndo(`Moved to ${dayFmt.format(parseDate(target))}`, () => putEntry(id, before));
+  }
+  box.addEventListener('touchstart', e => {
+    const row = e.target.closest('.entry'); if(!row || e.touches.length !== 1) return;
+    sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+    end(); timer = setTimeout(() => { timer = null; start(row, sx, sy); }, 420);
+  }, {passive:true, capture:true});
+  box.addEventListener('touchmove', e => {
+    if(drag){ e.preventDefault(); e.stopPropagation(); move(e.touches[0].clientX, e.touches[0].clientY); return; }
+    if(timer && (Math.abs(e.touches[0].clientX - sx) > 8 || Math.abs(e.touches[0].clientY - sy) > 8)) end();
+  }, {passive:false, capture:true});
+  const stop = e => { end(); if(drag){ e.stopPropagation(); finish(); } };
+  box.addEventListener('touchend', stop, {capture:true});
+  box.addEventListener('touchcancel', stop, {capture:true});
+  box.addEventListener('click', e => { if(suppress){ e.preventDefault(); e.stopPropagation(); } }, true);
+  box.addEventListener('contextmenu', e => { if(e.target.closest('.entry')) e.preventDefault(); });
+})();
+
 /* swipe down on any sheet that has a grab handle to close it */
 document.querySelectorAll('dialog').forEach(d => {
   if(!d.querySelector('.grabber')) return;
@@ -3112,7 +3372,7 @@ document.querySelectorAll('dialog').forEach(d => {
     state = 0;
     if(e.touches.length !== 1) return;
     const t = e.target, head = t.closest('.grabber, .sheet-title');
-    if(!head && (d.scrollTop > 0 || t.closest('.wheel, textarea'))) return;
+    if(!head && (d.scrollTop > 0 || t.closest('.wheel, textarea, .crop-box, input[type=range], #wkBody .entry'))) return;
     y0 = e.touches[0].clientY; x0 = e.touches[0].clientX; t0 = Date.now(); dy = 0;
     state = head ? 2 : 1;
     if(state === 2) d.style.transition = 'none';

@@ -604,6 +604,8 @@ dialog:not(#weekDlg):not(#fyDlg){max-height:calc(100dvh + var(--vgap,0px) - env(
 }
 .bank-card{margin-top:0}
 .bank-card .big{font-size:52px}
+details,details *,summary{box-sizing:border-box}
+dialog{overflow-x:hidden}
 .toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(8px);background:rgba(233,228,216,.96);color:#171819;padding:10px 18px;border-radius:14px;font-weight:600;font-size:14.5px;max-width:calc(100% - 32px);z-index:30;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;box-shadow:var(--shadow-lg)}
 .toast.show{opacity:1;transform:translateX(-50%)}
 @media (prefers-reduced-motion:reduce){.pulse,dialog[open]{animation:none}.toast,.seg button,.bubble,.orb{transition:none}}
@@ -711,7 +713,7 @@ dialog:not(#weekDlg):not(#fyDlg){max-height:calc(100dvh + var(--vgap,0px) - env(
       </div>
       <div class="tp" id="timePanel" hidden>
         <div class="tp-head"><strong id="tpTitle">Start</strong><span class="acts"><button type="button" class="text-btn" data-act="tpNow">Now</button><button type="button" class="text-btn" data-act="tpDone">Done</button></span></div>
-        <div class="wheels two-w"><div class="wheel" id="wH"></div><div class="wheel" id="wM"></div></div>
+        <div class="wheels"><div class="wheel" id="wH"></div><div class="wheel" id="wM"></div><div class="wheel" id="wA"></div></div>
       </div>
       <div class="two">
         <div class="lbl">Break
@@ -1252,7 +1254,7 @@ addEventListener('pageshow', fitScreen);
 document.addEventListener('visibilitychange', () => { if(!document.hidden) setTimeout(fitScreen, 100); });
 addEventListener('orientationchange', () => setTimeout(fitScreen, 300));
 /* ---------- version and update check ---------- */
-const APP_VERSION = '1.8', APP_DATE = '10 Nov 2026';
+const APP_VERSION = '1.81', APP_DATE = '10 Nov 2026';
 function paintAbout(){
   fitScreen();
   $('#appVer').textContent = APP_VERSION;
@@ -1549,7 +1551,8 @@ function renderCal(id){
 
 /* ---------- time wheels ---------- */
 const IH = 44;
-const HOURS = Array.from({length:24}, (_, h) => ({v:h, label:`${h % 12 || 12} ${h < 12 ? 'am' : 'pm'}`}));
+const H12 = [12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+const HOURS = Array.from({length:60}, (_, i) => ({v:i, label:String(H12[i % 12])}));   // five laps of 12, 1 … 11 so it scrolls round
 const MINS = Array.from({length:12}, (_, i) => ({v:i*5, label:pad(i*5)}));
 const AMPM = [{v:'am', label:'am'}, {v:'pm', label:'pm'}];
 const idxOf = el => Math.max(0, Math.min(el._items.length - 1, Math.round(el.scrollTop / IH)));
@@ -1567,15 +1570,25 @@ function wheel(el, items, onPick){
   el.addEventListener('click', e => { const w = e.target.closest('.wi'); if(w){ el._user = true; el.scrollTo({top:Number(w.dataset.i) * IH, behavior: reduced ? 'auto' : 'smooth'}); } });
 }
 function setWheel(el, i){ el._user = false; el.scrollTop = i * IH; markWheel(el, i); }
-const wH = $('#wH'), wM = $('#wM');
+const wH = $('#wH'), wM = $('#wM'), wA = $('#wA');
+let hIdx = 24;
 let tpTarget = null; // 'start' | 'end'
 function getHM(){ return form[tpTarget].value.split(':').map(Number); }
 function setHM(h, m){ form[tpTarget].value = `${pad(h)}:${pad(m)}`; paintTimes(); updateSummary(); }
-wheel(wH, HOURS, v => { const [, m] = getHM(); setHM(v, m); });
+wheel(wH, HOURS, i => {
+  const [h, m] = getHM(); let pm = h >= 12;
+  if((Math.floor(i / 12) - Math.floor(hIdx / 12)) % 2) pm = !pm;   // rolling past 11 → 12 (either way) flips am / pm, like the iPhone clock
+  hIdx = i;
+  setHM((H12[i % 12] % 12) + (pm ? 12 : 0), m);
+  setWheel(wA, pm ? 1 : 0);
+  if(i < 12 || i >= 48){ hIdx = 24 + i % 12; setWheel(wH, hIdx); }   // hop back to the middle lap without changing the time
+});
+wheel(wA, AMPM, v => { const [h, m] = getHM(); setHM((h % 12) + (v === 'pm' ? 12 : 0), m); });
 wheel(wM, MINS, v => { const [h] = getHM(); setHM(h, v); });
 function syncWheels(){
   const [h, m] = getHM();
-  setWheel(wH, h); setWheel(wM, Math.min(11, Math.round(m / 5)));
+  hIdx = 24 + H12.indexOf(h % 12 || 12);
+  setWheel(wH, hIdx); setWheel(wM, Math.min(11, Math.round(m / 5))); setWheel(wA, h >= 12 ? 1 : 0);
 }
 
 /* ---------- shift sheet ---------- */

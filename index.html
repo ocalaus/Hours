@@ -596,6 +596,7 @@ select{display:block;width:100%;margin-top:6px;background:var(--field);border:1p
 /* home-screen app on iPhone: iOS reports a viewport that stops short of the bottom of the screen and blurs a band below the clock */
 .app{bottom:calc(0px - var(--vgap,0px))}
 dialog{margin-bottom:calc(0px - var(--vgap,0px))}
+dialog:not(#weekDlg):not(#fyDlg){max-height:calc(100dvh + var(--vgap,0px) - env(safe-area-inset-top,0px) - 30px)!important}
 #weekDlg,#fyDlg{height:calc(100dvh + var(--vgap,0px))!important;margin-bottom:0!important}
 @media (display-mode: standalone){
   .app{padding-top:calc(env(safe-area-inset-top,0px) + 20px)}
@@ -746,11 +747,10 @@ dialog{margin-bottom:calc(0px - var(--vgap,0px))}
     <button type="button" class="co-item" data-act="exportBackup"><span class="mini" style="background:#3A3F46"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></span><span class="nm">Export Backup</span><span class="rt" id="bkSub"></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
     <button type="button" class="co-item" data-act="importBackup"><span class="mini" style="background:#3A3F46"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V9M7 14l5-5 5 5M5 3h14"/></svg></span><span class="nm">Import Backup</span><span class="rt"></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
     <input type="file" id="importFile" accept="application/json,.json" hidden>
-    <p class="sec">About</p>
-    <button type="button" class="co-item" data-act="checkUpdate"><span class="mini" style="background:#3A3F46"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg></span><span class="nm">Version <span id="appVer"></span></span><span class="rt">Check for update</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
-    <p class="small-muted" id="diagLine" style="margin:-2px 4px 10px;font-size:12px;line-height:1.4"></p>
     <p class="sec">Companies</p>
     <div id="coList"></div>
+    <p class="sec">About</p>
+    <button type="button" class="co-item" data-act="checkUpdate"><span class="mini" style="background:#3A3F46"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg></span><span class="nm">Version <span id="appVer"></span></span><span class="rt">Check for update</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
   </div>
   <div class="foot"><button type="button" class="btn pri" data-act="newCoFromSet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add Company</button></div>
 </dialog>
@@ -1243,18 +1243,16 @@ function fitScreen(){
   document.documentElement.style.setProperty('--vgap', gap + 'px');
 }
 fitScreen();
+[300, 1000, 2500].forEach(t => setTimeout(fitScreen, t));
 addEventListener('resize', fitScreen);
+addEventListener('pageshow', fitScreen);
+document.addEventListener('visibilitychange', () => { if(!document.hidden) setTimeout(fitScreen, 100); });
 addEventListener('orientationchange', () => setTimeout(fitScreen, 300));
 /* ---------- version and update check ---------- */
-const APP_VERSION = '1.5', APP_DATE = '10 Nov 2026';
+const APP_VERSION = '1.7', APP_DATE = '10 Nov 2026';
 function paintAbout(){
+  fitScreen();
   $('#appVer').textContent = APP_VERSION;
-  const sa = window.navigator.standalone || matchMedia('(display-mode: standalone)').matches;
-  const probe = document.createElement('div');
-  probe.style.cssText = 'position:fixed;top:0;left:0;padding-top:env(safe-area-inset-top,0px);visibility:hidden';
-  document.body.appendChild(probe); const inset = Math.round(parseFloat(getComputedStyle(probe).paddingTop) || 0); probe.remove();
-  const gap = getComputedStyle(document.documentElement).getPropertyValue('--vgap').trim() || '0px';
-  $('#diagLine').textContent = `Built ${APP_DATE}. ${sa ? 'Home-screen app' : 'Browser tab'}, top inset ${inset}, bottom gap ${gap}, screen ${screen.width}×${screen.height}, view ${innerWidth}×${innerHeight}`;
 }
 /* throw away the saved copy of the app and load the newest from GitHub */
 async function checkUpdate(){
@@ -3001,6 +2999,7 @@ function swipeRows(box, sel, commit){
 swipeRows($('#homeBody'), '.trow', el => {
   if(el.dataset.inv) deleteInvoiceUndo(Number(el.dataset.inv));
   else if(el.dataset.uninv) dismissWeeks(el.dataset.uninv);
+  else if(el.dataset.dkey) dismissSummary(el.dataset.dkey);
   else if(el.dataset.evid) deleteEventUndo(el.dataset.evid);
 });
 
@@ -3094,18 +3093,21 @@ function countdownBox(ms, auto){
   if(n === 1) return `<span class="cdbox${auto ? ' auto' : ''}"><span class="n w">Tmrw</span></span>`;
   return `<span class="cdbox${auto ? ' auto' : ''}"><span class="n">${n}</span><span class="u">days</span></span>`;
 }
-function cdRows(list, showCo){
+const sumKey = it => it.kind === 'ev' ? 'ev:' + it.id : `auto:${it.cid}:${it.date}:${it.title}`;
+function cdRows(list, showCo, dismiss){
   return list.map(it => {
     const co = showCo && it.cid && company(it.cid) ? company(it.cid).name : '';
     const sub = [fmtDay(it.ms), co, it.sub].filter(Boolean).join(', ');
     const btn = `<button type="button" class="card trow cdrow" data-evgo="${esc(it.date)}" data-evcid="${esc(it.cid || '')}"${it.kind === 'ev' ? ` data-evid="${esc(it.id)}"` : ''}>${countdownBox(it.ms, it.kind === 'auto')}<span class="tx"><span class="t">${esc(it.title)}</span><span class="s">${esc(sub)}</span></span></button>`;
+    if(dismiss) return `<div class="swipe" data-label="Dismiss">${btn.replace('<button type="button" class="card trow cdrow"', `<button type="button" class="card trow cdrow" data-dkey="${esc(sumKey(it))}"`)}</div>`;
     return it.kind === 'ev' ? `<div class="swipe" data-label="Delete">${btn}</div>` : btn;
   }).join('');
 }
 /* home: everything coming up across all companies */
 function eventSummaryHtml(){
-  const list = upcomingItems(null).slice(0, 5);
-  return `<div class="todo"><h2>Event Summary<button type="button" class="text-btn" data-act="addEventHome" style="margin-left:auto;font-family:var(--body);font-size:15px">+ Add</button></h2>${list.length ? `<div class="cdl">${cdRows(list, true)}</div>` : '<p class="empty" style="padding:8px">No upcoming events</p>'}</div>`;
+  const hidden = new Set(S.hiddenEvents || []);
+  const list = upcomingItems(null).filter(it => !hidden.has(sumKey(it))).slice(0, 5);
+  return `<div class="todo"><h2>Event Summary<button type="button" class="text-btn" data-act="addEventHome" style="margin-left:auto;font-family:var(--body);font-size:15px">+ Add</button></h2>${list.length ? `<div class="cdl">${cdRows(list, true, true)}</div>` : '<p class="empty" style="padding:8px">No upcoming events</p>'}</div>`;
 }
 /* company Calendar tab */
 function renderCalPg(){
@@ -3191,6 +3193,11 @@ evForm.addEventListener('submit', async ev => {
   await setState({events: events().filter(e => e.id !== rec.id).concat([rec])});
   toast(editing ? 'Event updated' : 'Event added');
 });
+async function dismissSummary(key){
+  const before = (S.hiddenEvents || []).slice();
+  await setState({hiddenEvents: before.concat([key]).slice(-200)});
+  toastUndo('Hidden from Event Summary', () => setState({hiddenEvents: before}));
+}
 async function deleteEventUndo(id){
   const rec = events().find(e => e.id === id); if(!rec) return;
   await setState({events: events().filter(e => e.id !== id)});

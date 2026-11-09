@@ -602,6 +602,7 @@ dialog:not(#weekDlg):not(#fyDlg){max-height:calc(100dvh + var(--vgap,0px) - env(
   .app{padding-top:calc(env(safe-area-inset-top,0px) + 8px)}
   #weekDlg .wsheet-head,#fyDlg .wsheet-head{padding-top:calc(env(safe-area-inset-top,0px) + 16px)}
 }
+html.stest,html.stest body{background:#5A0A4A!important}
 .toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(8px);background:rgba(233,228,216,.96);color:#171819;padding:10px 18px;border-radius:14px;font-weight:600;font-size:14.5px;max-width:calc(100% - 32px);z-index:30;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;box-shadow:var(--shadow-lg)}
 .toast.show{opacity:1;transform:translateX(-50%)}
 @media (prefers-reduced-motion:reduce){.pulse,dialog[open]{animation:none}.toast,.seg button,.bubble,.orb{transition:none}}
@@ -751,6 +752,7 @@ dialog:not(#weekDlg):not(#fyDlg){max-height:calc(100dvh + var(--vgap,0px) - env(
     <div id="coList"></div>
     <p class="sec">About</p>
     <button type="button" class="co-item" data-act="checkUpdate"><span class="mini" style="background:#3A3F46"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg></span><span class="nm">Version <span id="appVer"></span></span><span class="rt">Check for update</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+    <button type="button" class="co-item" data-act="screenTest"><span class="mini" style="background:#3A3F46"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="8" width="18" height="8" rx="2"/><path d="M7 8v3M11 8v4M15 8v3M19 8v4"/></svg></span><span class="nm">Screen Test</span><span class="rt">For fixing the bottom gap</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
   </div>
   <div class="foot"><button type="button" class="btn pri" data-act="newCoFromSet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add Company</button></div>
 </dialog>
@@ -1249,12 +1251,34 @@ addEventListener('pageshow', fitScreen);
 document.addEventListener('visibilitychange', () => { if(!document.hidden) setTimeout(fitScreen, 100); });
 addEventListener('orientationchange', () => setTimeout(fitScreen, 300));
 /* ---------- version and update check ---------- */
-const APP_VERSION = '1.71', APP_DATE = '10 Nov 2026';
+const APP_VERSION = '1.72', APP_DATE = '10 Nov 2026';
 function paintAbout(){
   fitScreen();
   $('#appVer').textContent = APP_VERSION;
 }
 /* throw away the saved copy of the app and load the newest from GitHub */
+/* temporary screen test: colours the page and marks where each height measurement ends, so a screenshot shows what iOS is doing */
+function screenTest(){
+  setDlg.close();
+  const old = document.getElementById('stestBox'); if(old){ old.remove(); document.querySelectorAll('.stest-bar').forEach(n => n.remove()); document.documentElement.classList.remove('stest'); return; }
+  document.documentElement.classList.add('stest');
+  const probe = document.createElement('div');
+  probe.style.cssText = 'position:fixed;top:0;left:0;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);visibility:hidden';
+  document.body.appendChild(probe); const cs = getComputedStyle(probe), insT = Math.round(parseFloat(cs.paddingTop) || 0), insB = Math.round(parseFloat(cs.paddingBottom) || 0); probe.remove();
+  const bars = [['100vh', 'calc(100vh - 8px)', '#39FF14', 8], ['lvh', 'calc(100lvh - 8px)', '#00E5FF', 70], ['dvh', 'calc(100dvh - 8px)', '#FFE600', 132], ['screen', (screen.height - 8) + 'px', '#FF8A00', 194], ['inner', (innerHeight - 8) + 'px', '#FFFFFF', 256]];
+  bars.forEach(([name, top, col, x]) => {
+    const b = document.createElement('div'); b.className = 'stest-bar';
+    b.style.cssText = `position:fixed;left:0;right:0;top:${top};height:8px;background:${col};z-index:9998;pointer-events:none;opacity:.85`;
+    b.innerHTML = `<span style="position:absolute;left:${x}px;bottom:10px;font:700 11px system-ui;color:${col};background:#000;padding:1px 4px;border-radius:4px">${name}</span>`;
+    document.body.appendChild(b);
+  });
+  const box = document.createElement('div'); box.id = 'stestBox';
+  box.style.cssText = 'position:fixed;left:16px;right:16px;top:40%;z-index:9999;background:#000;color:#fff;border:2px solid #FF00C8;border-radius:14px;padding:12px 14px;font:600 13px/1.5 system-ui';
+  const vv = window.visualViewport;
+  box.innerHTML = `Screen test (tap to close)<br>screen ${screen.width}×${screen.height}<br>inner ${innerWidth}×${innerHeight}, client ${document.documentElement.clientHeight}<br>visual ${vv ? Math.round(vv.height) : '–'}, safe area top ${insT}, bottom ${insB}<br>${window.navigator.standalone || matchMedia('(display-mode: standalone)').matches ? 'home-screen app' : 'browser tab'}, ${APP_VERSION}`;
+  box.addEventListener('click', screenTest);
+  document.body.appendChild(box);
+}
 async function checkUpdate(){
   toast('Getting the latest version…');
   try{
@@ -2861,6 +2885,7 @@ document.addEventListener('click', async ev => {
   else if(act === 'myDetails') openMe();
   else if(act === 'history') openHist();
   else if(act === 'checkUpdate') checkUpdate();
+  else if(act === 'screenTest') screenTest();
   else if(act === 'signOut'){ setDlg.close(); fbAuth.signOut(); }
   else if(act === 'signUp') signUp();
   else if(act === 'resetPw') resetPw();

@@ -593,6 +593,14 @@ select{display:block;width:100%;margin-top:6px;background:var(--field);border:1p
 .zoom-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:32px;height:32px;margin-top:-12px;border-radius:50%;background:#fff;border:3px solid var(--alt);box-shadow:0 2px 10px rgba(0,0,0,.5)}
 .zoom-row input[type=range]::-moz-range-track{height:8px;border-radius:4px;background:rgba(255,255,255,.18)}
 .zoom-row input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:#fff;border:3px solid var(--alt)}
+/* home-screen app on iPhone: iOS reports a viewport that stops short of the bottom of the screen and blurs a band below the clock */
+.app{bottom:calc(0px - var(--vgap,0px))}
+dialog{margin-bottom:calc(0px - var(--vgap,0px))}
+#weekDlg,#fyDlg{height:calc(100dvh + var(--vgap,0px))!important;margin-bottom:0!important}
+@media (display-mode: standalone){
+  .app{padding-top:calc(env(safe-area-inset-top,0px) + 20px)}
+  #weekDlg .wsheet-head,#fyDlg .wsheet-head{padding-top:calc(env(safe-area-inset-top,0px) + 30px)}
+}
 .toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(8px);background:rgba(233,228,216,.96);color:#171819;padding:10px 18px;border-radius:14px;font-weight:600;font-size:14.5px;max-width:calc(100% - 32px);z-index:30;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;box-shadow:var(--shadow-lg)}
 .toast.show{opacity:1;transform:translateX(-50%)}
 @media (prefers-reduced-motion:reduce){.pulse,dialog[open]{animation:none}.toast,.seg button,.bubble,.orb{transition:none}}
@@ -1223,6 +1231,17 @@ const authMsg = e => {
   if(c.includes('network')) return 'No connection. Try again when you’re online.';
   return 'Couldn’t sign in. Try again.';
 };
+/* measure how far the visible screen runs past the viewport iOS reports, and stretch the app to cover it */
+function fitScreen(){
+  const sa = window.navigator.standalone || matchMedia('(display-mode: standalone)').matches;
+  const portrait = innerHeight >= innerWidth;
+  const sh = portrait ? Math.max(screen.width, screen.height) : Math.min(screen.width, screen.height);
+  const gap = sa ? Math.max(0, Math.min(100, Math.round(sh - innerHeight))) : 0;
+  document.documentElement.style.setProperty('--vgap', gap + 'px');
+}
+fitScreen();
+addEventListener('resize', fitScreen);
+addEventListener('orientationchange', () => setTimeout(fitScreen, 300));
 async function init(){
   /* saving files: a normal download outside Claude */
   downloads = {save: async ({filename, data}) => {

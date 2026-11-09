@@ -594,7 +594,7 @@ select{display:block;width:100%;margin-top:6px;background:var(--field);border:1p
 .zoom-row input[type=range]::-moz-range-track{height:8px;border-radius:4px;background:rgba(255,255,255,.18)}
 .zoom-row input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:#fff;border:3px solid var(--alt)}
 /* home-screen app on iPhone: iOS reports a viewport that stops short of the bottom of the screen and blurs a band below the clock */
-.app{bottom:calc(0px - var(--vgap,0px))}
+.app{position:absolute!important;top:0!important;left:0;right:0;bottom:auto!important;height:var(--app-h,100dvh)}
 dialog{margin-bottom:calc(0px - var(--vgap,0px))}
 dialog:not(#weekDlg):not(#fyDlg){max-height:calc(100dvh + var(--vgap,0px) - env(safe-area-inset-top,0px) - 30px)!important}
 #weekDlg,#fyDlg{height:calc(100dvh + var(--vgap,0px))!important;margin-bottom:0!important}
@@ -1241,7 +1241,8 @@ function fitScreen(){
   const sa = window.navigator.standalone || matchMedia('(display-mode: standalone)').matches;
   const portrait = innerHeight >= innerWidth;
   const sh = portrait ? Math.max(screen.width, screen.height) : Math.min(screen.width, screen.height);
-  const gap = 0;   /* iOS doesn't draw the web page below its reported height, so nothing is stretched past it */
+  const gap = 0;
+  if(sa) document.documentElement.style.setProperty('--app-h', sh + 'px'); else document.documentElement.style.removeProperty('--app-h');
   document.documentElement.style.setProperty('--vgap', gap + 'px');
 }
 fitScreen();
@@ -1251,7 +1252,7 @@ addEventListener('pageshow', fitScreen);
 document.addEventListener('visibilitychange', () => { if(!document.hidden) setTimeout(fitScreen, 100); });
 addEventListener('orientationchange', () => setTimeout(fitScreen, 300));
 /* ---------- version and update check ---------- */
-const APP_VERSION = '1.72', APP_DATE = '10 Nov 2026';
+const APP_VERSION = '1.73', APP_DATE = '10 Nov 2026';
 function paintAbout(){
   fitScreen();
   $('#appVer').textContent = APP_VERSION;
@@ -1272,10 +1273,16 @@ function screenTest(){
     b.innerHTML = `<span style="position:absolute;left:${x}px;bottom:10px;font:700 11px system-ui;color:${col};background:#000;padding:1px 4px;border-radius:4px">${name}</span>`;
     document.body.appendChild(b);
   });
+  [['abs screen', (screen.height - 8) + 'px', '#FF3B30', 318], ['app', 'calc(var(--app-h, 100dvh) - 8px)', '#B48CF2', 382]].forEach(([name, top, col, x]) => {
+    const b = document.createElement('div'); b.className = 'stest-bar';
+    b.style.cssText = `position:absolute;left:0;right:0;top:${top};height:8px;background:${col};z-index:9998;pointer-events:none;opacity:.9`;
+    b.innerHTML = `<span style="position:absolute;left:${x}px;bottom:10px;font:700 11px system-ui;color:${col};background:#000;padding:1px 4px;border-radius:4px;white-space:nowrap">${name}</span>`;
+    document.body.appendChild(b);
+  });
   const box = document.createElement('div'); box.id = 'stestBox';
   box.style.cssText = 'position:fixed;left:16px;right:16px;top:40%;z-index:9999;background:#000;color:#fff;border:2px solid #FF00C8;border-radius:14px;padding:12px 14px;font:600 13px/1.5 system-ui';
   const vv = window.visualViewport;
-  box.innerHTML = `Screen test (tap to close)<br>screen ${screen.width}×${screen.height}<br>inner ${innerWidth}×${innerHeight}, client ${document.documentElement.clientHeight}<br>visual ${vv ? Math.round(vv.height) : '–'}, safe area top ${insT}, bottom ${insB}<br>${window.navigator.standalone || matchMedia('(display-mode: standalone)').matches ? 'home-screen app' : 'browser tab'}, ${APP_VERSION}`;
+  box.innerHTML = `Screen test (tap to close)<br>app height ${document.querySelector('.app').getBoundingClientRect().height}<br>screen ${screen.width}×${screen.height}<br>inner ${innerWidth}×${innerHeight}, client ${document.documentElement.clientHeight}<br>visual ${vv ? Math.round(vv.height) : '–'}, safe area top ${insT}, bottom ${insB}<br>${window.navigator.standalone || matchMedia('(display-mode: standalone)').matches ? 'home-screen app' : 'browser tab'}, ${APP_VERSION}`;
   box.addEventListener('click', screenTest);
   document.body.appendChild(box);
 }

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#171819">
-<title>Gigsy</title>
+<title>Hours</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -12,7 +12,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Gigsy">
+<meta name="apple-mobile-web-app-title" content="Hours">
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
@@ -438,50 +438,6 @@ input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-ou
 .todo .swipe .trow{position:relative;z-index:1;margin:0;touch-action:pan-y}
 .todo .swipe[data-label="Dismiss"]{background:#5C4416}
 .todo .swipe[data-label="Dismiss"].armed{background:var(--amber)}
-.cal-bar{display:flex;align-items:center;gap:4px;margin:4px 0 8px}
-.cal-bar h2{flex:1;font-family:var(--display);font-size:24px;font-weight:600;margin:0;white-space:nowrap}
-.cal-bar .icon-btn{border:none;background:none;box-shadow:none;color:var(--muted);width:40px}
-#mcal{touch-action:pan-y}
-.cdl{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;margin-bottom:18px}
-.cdrow{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:10px 12px 10px 10px;cursor:pointer;color:inherit;border-radius:16px}
-.cdrow:active{transform:scale(.99)}
-.cdbox{flex:none;width:60px;height:60px;border-radius:14px;background:rgba(242,163,58,.13);border:1px solid rgba(242,163,58,.35);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--amber);gap:1px}
-.cdbox.auto{background:rgba(81,149,192,.13);border-color:rgba(81,149,192,.35);color:var(--alt)}
-.cdbox.now{background:var(--amber);border-color:var(--amber);color:#1E1400}
-.cdbox .n{font-family:var(--display);font-size:26px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
-.cdbox .n.w{font-size:17px}
-.cdbox .u{font-size:11px;font-weight:700}
-.cdrow .tx{flex:1;min-width:0}
-.cdrow .t{display:block;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.cdrow .s{display:block;color:var(--muted);font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.cd-head{font-family:var(--display);font-size:22px;font-weight:600;margin:4px 0 10px}
-.mcal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-bottom:6px}
-.mcal .dow{text-align:center;font-size:11.5px;font-weight:600;color:var(--muted);padding:2px 0 2px}
-.mday{aspect-ratio:1/1.08;border-radius:11px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-weight:600;font-size:14.5px;cursor:pointer;padding:6px 0 0;display:flex;flex-direction:column;align-items:center;gap:5px;font-variant-numeric:tabular-nums}
-.mday:active{transform:scale(.95)}
-.mday.out{opacity:.35}
-.mday.hol{background:repeating-linear-gradient(135deg,var(--panel2) 0 5px,#202326 5px 10px)}
-.mday.today{border-color:var(--alt);color:var(--alt)}
-.mday.sel{background:var(--pri);border-color:var(--alt);color:#fff}
-.mday .dots{display:flex;gap:3px;min-height:5px}
-.mday .dots i{width:5px;height:5px;border-radius:50%}
-.mday .dots i.ev{background:var(--amber)}.mday .dots i.sh{background:var(--alt)}
-.mday.sel .dots i{background:#fff}
-.ic.ev{background:var(--amber)}
-#dayList .trow{margin-bottom:8px}
-#dayList .swipe{border-top:none;border-radius:16px;margin-bottom:8px}
-#dayList .swipe .trow{position:relative;z-index:1;margin:0;touch-action:pan-y}
-select{display:block;width:100%;margin-top:6px;background:var(--field);border:1px solid var(--glass-line);border-radius:13px;padding:11px 13px;min-height:50px;color:var(--ink);font-size:16px;font-weight:500;-webkit-appearance:none;appearance:none}
-#seg{grid-template-columns:repeat(4,1fr)!important}
-#seg .seg-thumb{width:calc((100% - 8px) / 4)!important}
-#seg button{font-size:14px}
-#calPanel{overflow-x:hidden}
-#calPanel .swipe,.cdl .swipe{border-top:none;border-radius:16px}
-#calPanel .swipe .trow{position:relative;z-index:1;margin:0;touch-action:pan-y}
-#dayList .swipe{margin-bottom:8px}
-.cdl .swipe{margin-bottom:0}
-.trow.cdrow{padding:10px 12px 10px 10px;gap:14px;margin:0}
-.todo .cdl{margin-bottom:0}
 .ist.hol{color:var(--muted)}.ist.hol i{background:var(--muted)}
 .term-row{display:grid;grid-template-columns:50px 1fr 36px;align-items:center;gap:8px;margin:6px 0}
 .term-row .tn{font-size:13px;font-weight:600;color:var(--muted)}
@@ -539,6 +495,23 @@ select{display:block;width:100%;margin-top:6px;background:var(--field);border:1p
 .drop[open] summary svg{transform:rotate(90deg)}
 .drop-body{padding:0 12px 12px}
 #cpTitle{font-size:26px;white-space:nowrap}
+.mcal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-bottom:6px}
+.mcal .dow{text-align:center;font-size:11.5px;font-weight:600;color:var(--muted);padding:2px 0 2px}
+.mday{aspect-ratio:1/1.08;border-radius:11px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-weight:600;font-size:14.5px;cursor:pointer;padding:6px 0 0;display:flex;flex-direction:column;align-items:center;gap:5px;font-variant-numeric:tabular-nums}
+.mday:active{transform:scale(.95)}
+.mday.out{opacity:.35}
+.mday.hol{background:repeating-linear-gradient(135deg,var(--panel2) 0 5px,#202326 5px 10px)}
+.mday.today{border-color:var(--alt);color:var(--alt)}
+.mday.sel{background:var(--pri);border-color:var(--alt);color:#fff}
+.mday .dots{display:flex;gap:3px;min-height:5px}
+.mday .dots i{width:5px;height:5px;border-radius:50%}
+.mday .dots i.ev{background:var(--amber)}.mday .dots i.sh{background:var(--alt)}
+.mday.sel .dots i{background:#fff}
+.ic.ev{background:var(--amber)}
+#dayList .trow{margin-bottom:8px}
+#dayList .swipe{border-top:none;border-radius:16px;margin-bottom:8px}
+#dayList .swipe .trow{position:relative;z-index:1;margin:0;touch-action:pan-y}
+select{display:block;width:100%;margin-top:6px;background:var(--field);border:1px solid var(--glass-line);border-radius:13px;padding:11px 13px;min-height:50px;color:var(--ink);font-size:16px;font-weight:500;-webkit-appearance:none;appearance:none}
 .tgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .tile2{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:12px 14px 13px;display:flex;flex-direction:column;gap:3px;min-width:0;box-shadow:var(--shadow)}
 .tile2 .k{font-size:12.5px;font-weight:600;color:var(--muted)}
@@ -547,6 +520,36 @@ select{display:block;width:100%;margin-top:6px;background:var(--field);border:1p
 .tile2 .v .pos small,.tile2 .v .neg small{color:inherit;opacity:.75}
 .tile2 .s{font-size:12.5px;color:var(--muted);line-height:1.35}
 .tile2.wide{grid-column:1/-1}
+.cal-bar{display:flex;align-items:center;gap:4px;margin:4px 0 8px}
+.cal-bar h2{flex:1;font-family:var(--display);font-size:24px;font-weight:600;margin:0;white-space:nowrap}
+.cal-bar .icon-btn{border:none;background:none;box-shadow:none;color:var(--muted);width:40px}
+#mcal{touch-action:pan-y}
+.cdl{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;margin-bottom:18px}
+#seg{grid-template-columns:repeat(4,1fr)!important}
+#seg .seg-thumb{width:calc((100% - 8px) / 4)!important}
+#seg button{font-size:14px}
+#calPanel{overflow-x:hidden}
+#calPanel .swipe,.cdl .swipe{border-top:none;border-radius:16px}
+#calPanel .swipe .trow{position:relative;z-index:1;margin:0;touch-action:pan-y}
+#dayList .swipe{margin-bottom:8px}
+.cdl .swipe{margin-bottom:0}
+.trow.cdrow{padding:10px 12px 10px 10px;gap:14px;margin:0}
+.todo .cdl{margin-bottom:0}
+.cdrow{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:10px 12px 10px 10px;cursor:pointer;color:inherit;border-radius:16px}
+.cdrow:active{transform:scale(.99)}
+.cdbox{flex:none;width:60px;height:60px;border-radius:14px;background:rgba(242,163,58,.13);border:1px solid rgba(242,163,58,.35);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--amber);gap:1px}
+.cdbox.auto{background:rgba(81,149,192,.13);border-color:rgba(81,149,192,.35);color:var(--alt)}
+.cdbox.now{background:var(--amber);border-color:var(--amber);color:#1E1400}
+.cdbox .n{font-family:var(--display);font-size:26px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.cdbox .n.w{font-size:17px}
+.cdbox .u{font-size:11px;font-weight:700}
+.cdrow .tx{flex:1;min-width:0}
+.cdrow .t{display:block;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cdrow .s{display:block;color:var(--muted);font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cd-head{font-family:var(--display);font-size:22px;font-weight:600;margin:4px 0 10px}
+.auth{width:100%;max-width:480px;margin:0 auto;padding:56px 22px 40px;overflow-y:auto}
+.auth h1{font-family:var(--display);font-size:42px;font-weight:700;margin:0 0 8px;line-height:1.05}
+.auth .sub{margin:0 0 22px;font-size:15px}
 .foot{background:rgba(27,29,32,.74)!important;-webkit-backdrop-filter:blur(22px) saturate(150%);backdrop-filter:blur(22px) saturate(150%);border-top:1px solid rgba(255,255,255,.07);margin-top:16px}
 #weekDlg .foot,#fyDlg .foot{background:rgba(23,24,25,.8)!important;border-radius:18px 18px 0 0}
 .wheels.two-w{grid-template-columns:1.3fr 1fr}
@@ -590,11 +593,6 @@ select{display:block;width:100%;margin-top:6px;background:var(--field);border:1p
 .zoom-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:32px;height:32px;margin-top:-12px;border-radius:50%;background:#fff;border:3px solid var(--alt);box-shadow:0 2px 10px rgba(0,0,0,.5)}
 .zoom-row input[type=range]::-moz-range-track{height:8px;border-radius:4px;background:rgba(255,255,255,.18)}
 .zoom-row input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:#fff;border:3px solid var(--alt)}
-details,details *,summary{box-sizing:border-box}
-dialog{overflow-x:hidden}
-.auth{width:100%;max-width:480px;margin:0 auto;padding:56px 22px 40px;overflow-y:auto}
-.auth h1{font-family:var(--display);font-size:42px;font-weight:700;margin:0 0 8px;line-height:1.05}
-.auth .sub{margin:0 0 22px;font-size:15px}
 /* home-screen app on iPhone: iOS reports a viewport that stops short of the bottom of the screen and blurs a band below the clock */
 .app{position:absolute!important;top:0!important;left:0;right:0;bottom:auto!important;height:var(--app-h,100dvh)}
 dialog{margin-bottom:calc(0px - var(--vgap,0px))}
@@ -604,13 +602,11 @@ dialog:not(#weekDlg):not(#fyDlg){max-height:calc(100dvh + var(--vgap,0px) - env(
   .app{padding-top:calc(max(env(safe-area-inset-top,0px), var(--top-min,0px)) + 8px)}
   #weekDlg .wsheet-head,#fyDlg .wsheet-head{padding-top:calc(max(env(safe-area-inset-top,0px), var(--top-min,0px)) + 16px)}
 }
-.acc-row{display:flex;align-items:center;gap:8px;padding:10px 12px;margin-bottom:8px;border-radius:14px;background:var(--field);border:1px solid var(--glass-line)}
-.acc-info{flex:1;min-width:0;display:flex;flex-direction:column}
-.acc-info .t{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.acc-info .s{font-size:12.5px;color:var(--muted)}
-.btn.sm{min-height:38px;padding:0 12px;font-size:14px;border-radius:10px;flex:none}
+.bank-card{margin-top:0}
+.bank-card .big{font-size:52px}
+details,details *,summary{box-sizing:border-box}
+dialog{overflow-x:hidden}
 @media (display-mode: standalone){ .auth{padding-top:24px} }
-.auth h1 + form{margin-top:24px}
 .toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(8px);background:rgba(233,228,216,.96);color:#171819;padding:10px 18px;border-radius:14px;font-weight:600;font-size:14.5px;max-width:calc(100% - 32px);z-index:30;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;box-shadow:var(--shadow-lg)}
 .toast.show{opacity:1;transform:translateX(-50%)}
 @media (prefers-reduced-motion:reduce){.pulse,dialog[open]{animation:none}.toast,.seg button,.bubble,.orb{transition:none}}
@@ -622,23 +618,15 @@ dialog:not(#weekDlg):not(#fyDlg){max-height:calc(100dvh + var(--vgap,0px) - env(
 
   <div class="view" id="authView" hidden>
     <div class="auth">
-      <h1>Gigsy</h1>
+      <h1>Hours</h1>
+      <p class="sub">Sign in to your account.</p>
       <form id="authForm" novalidate>
         <label>Email<input name="email" type="email" inputmode="email" autocomplete="username"></label>
         <label>Password<input name="password" type="password" autocomplete="current-password"></label>
         <p class="err" id="authErr" role="alert"></p>
         <button class="btn pri" type="submit" style="width:100%;margin-top:6px">Sign In</button>
-        <button class="btn glass" type="button" data-act="signUp" style="width:100%;margin-top:10px">Request Access</button>
         <button class="text-btn" type="button" data-act="resetPw" style="margin:14px auto 0;display:flex">Forgot password?</button>
       </form>
-    </div>
-  </div>
-
-  <div class="view" id="waitView" hidden>
-    <div class="auth">
-      <h1 id="waitTitle">Waiting for approval</h1>
-      <p class="sub" id="waitMsg"></p>
-      <button class="btn glass" type="button" data-act="signOut" style="width:100%">Sign Out</button>
     </div>
   </div>
 
@@ -652,24 +640,9 @@ dialog:not(#weekDlg):not(#fyDlg){max-height:calc(100dvh + var(--vgap,0px) - env(
     </div>
   </div>
 
-  <div class="view" id="adminView" hidden>
-    <header class="bar">
-      <div class="grow"><h1>Gigsy Admin</h1></div>
-      <button class="icon-btn" data-act="signOut" aria-label="Sign out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/></svg></button>
-    </header>
-    <div class="scroll">
-      <p class="sec" id="accPendHead">Waiting</p>
-      <div id="accPending"></div>
-      <p class="sec">Approved</p>
-      <div id="accApproved"></div>
-      <div id="accOtherWrap" hidden><p class="sec">Denied or Removed</p><div id="accOther"></div></div>
-      <button class="btn glass" type="button" data-act="signOut" style="width:100%;margin-top:18px">Sign Out</button>
-    </div>
-  </div>
-
   <div class="view" id="homeView">
     <header class="bar">
-      <div class="grow"><h1>Gigsy</h1></div>
+      <div class="grow"><h1>Hours</h1></div>
       <button class="icon-btn" data-act="settings" aria-label="Settings">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
       </button>
@@ -697,14 +670,17 @@ dialog:not(#weekDlg):not(#fyDlg){max-height:calc(100dvh + var(--vgap,0px) - env(
       <section class="panel" id="pastPanel" role="tabpanel" aria-label="Past Shifts">
         <div class="toolbar">
           <button class="btn pri" data-act="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add Past Shift</button>
-          <button class="btn ghost" data-act="export" aria-label="Export CSV"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></button>
+          <button class="btn ghost" id="expBtn" data-act="export" aria-label="Export"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></button>
         </div>
         <div id="pastBody"></div>
       </section>
       <section class="panel" id="invPanel" role="tabpanel" aria-label="Invoices">
+        <div id="invWrap">
         <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="invSearch" type="search" placeholder="Search invoices" autocomplete="off" enterkeyhint="search"></div>
         <div id="invStats"></div>
         <div id="invList"></div>
+        </div>
+        <div id="balWrap" hidden></div>
       </section>
       <section class="panel" id="calPanel" role="tabpanel" aria-label="Calendar">
         <div class="toolbar"><button class="btn pri" data-act="addEvent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg> Add Event</button></div>
@@ -793,6 +769,7 @@ dialog:not(#weekDlg):not(#fyDlg){max-height:calc(100dvh + var(--vgap,0px) - env(
   </div>
 </dialog>
 
+<!-- Calendar -->
 <dialog id="cropDlg" aria-labelledby="cropTitle">
   <div class="sheet">
     <div class="grabber"></div>
@@ -803,6 +780,20 @@ dialog:not(#weekDlg):not(#fyDlg){max-height:calc(100dvh + var(--vgap,0px) - env(
     <button type="button" class="text-btn" data-act="cropReset" style="margin:6px auto 0;display:flex">Reset</button>
   </div>
   <div class="foot"><button type="button" class="btn glass" data-act="cropCancel">Cancel</button><button type="button" class="btn pri" data-act="cropUse">Use Logo</button></div>
+</dialog>
+<dialog id="rangeDlg" aria-labelledby="rgTitle">
+  <div class="sheet">
+    <div class="grabber"></div>
+    <div class="sheet-title"><h2 id="rgTitle">Add Term</h2><button type="button" class="x" data-act="closeRange" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <div class="two">
+      <div class="lbl" id="rgSLbl">Start<button type="button" class="field-btn" data-rpick="s" aria-expanded="false"><span id="rgS"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></button></div>
+      <div class="lbl" id="rgEndWrap">End<button type="button" class="field-btn" data-rpick="e" aria-expanded="false"><span id="rgE"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></button></div>
+    </div>
+    <div class="cal" id="calRS" hidden></div>
+    <div class="cal" id="calRE" hidden></div>
+    <p class="small-muted" id="rgInfo" style="text-align:center;margin:0 0 4px"></p>
+  </div>
+  <div class="foot"><button type="button" class="btn glass" data-act="closeRange">Cancel</button><button type="button" class="btn pri" data-act="rgSave">Save</button></div>
 </dialog>
 <dialog id="impDlg" aria-labelledby="impTitle">
   <div class="sheet" style="padding-bottom:calc(20px + env(safe-area-inset-bottom,0px))">
@@ -954,6 +945,30 @@ dialog:not(#weekDlg):not(#fyDlg){max-height:calc(100dvh + var(--vgap,0px) - env(
         <input type="file" id="logoFile" accept="image/*" hidden>
       </div>
       <label>Name<input name="name" autocomplete="organization"></label>
+      <div class="lbl">Type
+        <div class="seg3 two-up" id="kindSeg"><button type="button" data-kind="client">Client</button><button type="button" data-kind="employer">Employer</button></div>
+      </div>
+      <div id="empBox" hidden>
+        <div class="two">
+          <label>Weekly Hours<span class="affix pct"><input type="number" name="weekly" min="0" step="0.1" inputmode="decimal" placeholder="22.8"><span class="suf">h</span></span></label>
+          <label>Tracking From<input type="date" name="trackFrom"></label>
+        </div>
+        <details class="drop"><summary><span>Term Dates</span><span class="cnt" id="termCnt"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></summary>
+          <div class="drop-body">
+          <div id="termList"></div>
+          <div class="two" style="margin-top:6px">
+            <button type="button" class="btn glass" data-act="addTerm">Add Term</button>
+            <button type="button" class="btn glass" data-act="barkerTerms">Barker 2026–27</button>
+          </div>
+          </div>
+        </details>
+        <details class="drop"><summary><span>Public Holidays in Term</span><span class="cnt" id="phCnt"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></summary>
+          <div class="drop-body">
+          <div id="phList"></div>
+          <button type="button" class="btn glass" data-act="addPh" style="width:100%;margin-top:6px">Add Public Holiday</button>
+          </div>
+        </details>
+      </div>
       <div class="lbl">Super
         <div class="seg3" id="superSeg">
           <button type="button" data-super="plus">Excl. Super</button>
@@ -962,8 +977,12 @@ dialog:not(#weekDlg):not(#fyDlg){max-height:calc(100dvh + var(--vgap,0px) - env(
         </div>
       </div>
       <div class="two">
-        <label>Hourly Rate
+        <label id="rateWrap2">Hourly Rate
           <span class="affix"><span class="pre">$</span><input type="number" name="rate" min="0" step="0.01" inputmode="decimal" placeholder="0"><span class="suf">/h</span></span>
+        </label>
+        <label id="salaryWrap" hidden>Salary
+          <span class="affix"><span class="pre">$</span><input type="number" name="salary" min="0" step="100" inputmode="decimal" placeholder="0"><span class="suf">/yr</span></span>
+          <span class="small-muted" id="salaryHint" style="display:block;margin-top:4px"></span>
         </label>
         <label id="superPctWrap">Super Rate
           <span class="affix pct"><input type="number" name="superPct" min="0" max="30" step="0.5" inputmode="decimal"><span class="suf">%</span></span>
@@ -972,11 +991,13 @@ dialog:not(#weekDlg):not(#fyDlg){max-height:calc(100dvh + var(--vgap,0px) - env(
       <div class="lbl">Round Times
         <div class="seg3" id="roundSeg"><button type="button" data-round="0">Off</button><button type="button" data-round="15">15 min</button><button type="button" data-round="30">30 min</button></div>
       </div>
+      <div id="billBox">
       <p class="sec">Billing Details</p>
       <label>Legal Name<input name="billName" placeholder="As it should appear on invoices" autocomplete="off"></label>
       <label>ABN<input name="billAbn" inputmode="numeric" placeholder="12 345 678 901" autocomplete="off"></label>
       <label>Address<textarea name="billAddress" rows="2" autocomplete="off"></textarea></label>
       <label>Accounts Email<input name="billEmail" type="email" inputmode="email" autocomplete="off"></label>
+      </div>
       <p class="err" id="coErr" role="alert"></p>
       <button type="button" class="danger-link" data-act="delCo" id="delCo">Delete Company</button>
     </div>
@@ -1071,7 +1092,10 @@ const logoSrc = c => c ? (c.logo ? '/_blob/' + c.logo : (c.logoData || '')) : ''
 function superOf(cid){ const c = company(cid); const pct = c && c.superPct != null && Number(c.superPct) >= 0 ? Number(c.superPct) : SG_DEFAULT; return {mode:(c && c.superMode) || 'plus', pct}; }
 const superLabel = cid => ({plus:'excl. super', incl:'incl. super', none:''})[superOf(cid).mode];
 /* pay split for one shift: wage (before tax, without super), super, and the two together */
+const salaryOf = c => (c && c.kind === 'employer' && Number(c.salary) > 0) ? Number(c.salary) : 0;
+function salaryWage(c){ const s = salaryOf(c); if(!s) return 0; const {mode, pct} = superOf(c.id); return mode === 'incl' ? s / (1 + pct / 100) : s; }
 function payOf(e){
+  if(salaryOf(company(e.companyId))) return null;
   const r = entryRate(e); if(!r) return null;
   const amt = hoursOf(e) * r, {mode, pct} = superOf(e.companyId), k = pct/100;
   if(mode === 'incl'){ const wage = amt/(1+k); return {wage, sup: amt - wage, total: amt}; }
@@ -1119,14 +1143,14 @@ function showSheet(d){ d.showModal(); d.scrollTop = 0; requestAnimationFrame(() 
 /* ---------- storage: Firebase (your own database) ---------- */
 /* Paste your Firebase web app config here, or leave it empty and paste it into the app on first open. */
 const FIREBASE_CONFIG = {
-  apiKey: "AIzaSyAH972037hCXyCswNuIFxO55jQ8-rKGScc",
-  authDomain: "gigsy-80d21.firebaseapp.com",
-  projectId: "gigsy-80d21",
-  storageBucket: "gigsy-80d21.firebasestorage.app",
-  messagingSenderId: "230416659088",
-  appId: "1:230416659088:web:2cb10573145a97df419e15"
+  apiKey: "AIzaSyDMCMKzbyHxKA3i7LlwrcHolO03sWxeiaw",
+  authDomain: "hours-datab.firebaseapp.com",
+  projectId: "hours-datab",
+  storageBucket: "hours-datab.firebasestorage.app",
+  messagingSenderId: "430008882516",
+  appId: "1:430008882516:web:9c2ef3fb0a21a7fcb5a4c1"
 };
-let LS = 'gigsy-tracker-v1';
+let LS = 'hours-tracker-v1';
 let fs = null, fbAuth = null, uid = null, unsubs = [], gen = 0;
 function lsLoad(){ try{ const r = JSON.parse(localStorage.getItem(LS) || 'null'); if(r){ S = Object.assign(blank(), r.state || {}); E = Array.isArray(r.entries) ? r.entries.sort((p, q) => p.start - q.start) : []; } }catch(e){} }
 function lsSave(){ try{ localStorage.setItem(LS, JSON.stringify({state:S, entries:E})); }catch(e){ toast('Couldn’t save on this device'); } }
@@ -1192,7 +1216,7 @@ function startData(){
 /* config: from the code above, or pasted into the app once (kept on this device) */
 function readConfig(){
   if(FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.projectId) return FIREBASE_CONFIG;
-  try{ const c = JSON.parse(localStorage.getItem('gigsy-fb-config') || 'null'); if(c && c.apiKey && c.projectId) return c; }catch(e){}
+  try{ const c = JSON.parse(localStorage.getItem('hours-fb-config') || 'null'); if(c && c.apiKey && c.projectId) return c; }catch(e){}
   return null;
 }
 function parseConfig(t){
@@ -1201,7 +1225,7 @@ function parseConfig(t){
   try{ const c = JSON.parse(j); return c.apiKey && c.projectId ? c : null; }catch(e){ return null; }
 }
 function showOnly(id){
-  ['authView', 'setupView', 'waitView', 'adminView'].forEach(v => { $('#' + v).hidden = v !== id; });
+  ['authView', 'setupView'].forEach(v => { $('#' + v).hidden = v !== id; });
   if(id){ $('#homeView').hidden = true; $('#coView').hidden = true; }
 }
 const authMsg = e => {
@@ -1268,13 +1292,12 @@ async function init(){
   try{ fs.settings({ignoreUndefinedProperties:true}); }catch(e){}
   try{ await fs.enablePersistence({synchronizeTabs:true}); }catch(e){}
   fbAuth.onAuthStateChanged(user => {
-    stopAccess();
     if(user){
-      uid = user.uid;
+      uid = user.uid; mode = 'db'; showOnly(null);
       $('#acctEmail').textContent = user.email || 'Signed in';
-      checkAccess(user);
+      startData();
     }else{
-      stopData(); uid = null; S = blank(); E = []; mode = 'signedout'; isAdmin = false;
+      stopData(); uid = null; S = blank(); E = []; mode = 'signedout';
       document.querySelectorAll('dialog[open]').forEach(d => d.close());
       if(location.hash) location.hash = '';
       showOnly('authView');
@@ -1289,7 +1312,7 @@ $('#authForm').addEventListener('submit', async ev => {
 });
 async function signUp(){
   const f = $('#authForm').elements; $('#authErr').textContent = '';
-  try{ await fbAuth.createUserWithEmailAndPassword(f['email'].value.trim(), f['password'].value); }
+  try{ await fbAuth.createUserWithEmailAndPassword(f['email'].value.trim(), f['password'].value); toast('Account created'); }
   catch(e){ $('#authErr').textContent = authMsg(e); }
 }
 async function resetPw(){
@@ -1301,7 +1324,7 @@ async function resetPw(){
 function saveConfig(){
   const c = parseConfig($('#cfgBox').value);
   if(!c){ $('#cfgErr').textContent = 'That doesn’t look like a Firebase config. Copy the whole firebaseConfig block.'; return; }
-  try{ localStorage.setItem('gigsy-fb-config', JSON.stringify(c)); }catch(e){}
+  try{ localStorage.setItem('hours-fb-config', JSON.stringify(c)); }catch(e){}
   location.reload();
 }
 
@@ -1321,7 +1344,7 @@ window.addEventListener('hashchange', route);
 /* ---------- render ---------- */
 const ready = () => mode !== 'loading' && stateLoaded && entriesLoaded;
 function render(){
-  if(mode === 'signedout' || mode === 'setup' || mode === 'waiting' || mode === 'admin') return;
+  if(mode === 'signedout' || mode === 'setup') return;
   if(view === 'company' && ready() && ((cur !== 'other' && !known(cur)) || (cur === 'other' && !hasOther()))){ view = 'home'; location.hash = ''; }
   $('#homeView').hidden = view !== 'home';
   $('#coView').hidden = view !== 'company';
@@ -1365,7 +1388,7 @@ function todoHtml(){
     `<button type="button" class="card trow" data-inv="${r.no}"><i class="ic over"></i><span class="tx"><span class="t">${esc(r.label)} ${invStatus(r).t.toLowerCase()}</span><span class="s">${esc(nameOf(recCid(r)))}, ${periodOf(r)}</span></span><span class="a">${money.format(r.total || 0)}</span>${ICON}</button>`));
   inv.filter(recChanged).forEach(r => rows.push(
     `<button type="button" class="card trow" data-inv="${r.no}"><i class="ic chg"></i><span class="tx"><span class="t">${esc(r.label)} needs re-invoicing</span><span class="s">${esc(nameOf(recCid(r)))}, shifts changed since it was sent</span></span>${ICON}</button>`));
-  S.companies.forEach(c => {
+  S.companies.filter(c => c.kind !== 'employer').forEach(c => {
     const weeks = pendingWeeks(c.id); if(!weeks.length) return;
     const set = new Set(weeks), m = shiftInvMap();
     const amt = entriesFor(c.id).filter(e => !m.has(e.id) && set.has(startOfWeek(e.start))).reduce((s, e) => s + billOf(e), 0);
@@ -1385,7 +1408,10 @@ function renderCompany(){
   const src = logoSrc(c);
   $('#coLogo').innerHTML = src ? `<span class="bar-logo"><img src="${esc(src)}" alt=""></span>` : '';
   if(!ready()) return;
-  renderLive(); renderPast(); renderInvPanel(); renderCalPg(); updateSeg(tab);
+  const emp = isEmp(cur);
+  document.querySelector('#seg [data-tab="2"]').textContent = emp ? 'Hours' : 'Invoices';
+  $('#invWrap').hidden = emp; $('#balWrap').hidden = !emp; $('#expBtn').hidden = emp;
+  renderLive(); renderPast(); if(emp) renderBalance(); else renderInvPanel(); renderCalPg(); updateSeg(tab);
 }
 function renderLive(){
   const p = $('#livePanel'), mine = entriesFor(cur), now = Date.now(), today = toDateInput(now);
@@ -1425,7 +1451,7 @@ function renderPast(){
   body.innerHTML = `<div class="weeks">${keys.map(ws => {
     const list = weeks.get(ws), we = addDays(ws, 6);
     const perDay = [0,1,2,3,4,5,6].map(i => { const d = toDateInput(addDays(ws, i)); return sumHours(list.filter(e => toDateInput(e.start) === d)); });
-    const max = Math.max(10, ...perDay), pay = sumPay(list), total = sumHours(list), ist = weekInvStatus(list, im);
+    const max = Math.max(10, ...perDay), pay = sumPay(list), total = sumHours(list), ist = isEmp(cur) ? weekBalStatus(ws, list) : weekInvStatus(list, im);
     return `<button class="card wk${ws === cw ? ' now' : ''}" data-week="${ws}">
       <div class="wk-top"><div><h3>${weekName(ws)}</h3><p>${fmtRange(ws, we)}${list.length ? `, ${list.length} ${list.length === 1 ? 'shift' : 'shifts'}` : ''}</p></div><div class="wk-h">${fmtH(total)}<small>h</small></div></div>
       <div class="bars">${perDay.map((h,i) => `<span><i class="${h ? '' : 'zero'}" style="height:${h ? Math.max(8, h/max*100) : 0}%"></i><b>${'MTWTFSS'[i]}</b></span>`).join('')}</div>
@@ -1457,8 +1483,9 @@ function renderWeekSheet(){
     if(!items.length) return `<div class="dcard off" data-dday="${ds}"><div class="dhead"><h3>${dayFmt.format(dms)}</h3>${add}</div></div>`;
     return `<div class="dcard" data-dday="${ds}"><div class="dhead"><h3>${dayFmt.format(dms)}</h3><span class="dh">${fmtH(sumHours(items))} h</span>${add}</div>${items.map(e => entryRow(e, im)).join('')}</div>`;
   }).join('');
-  $('#wkBody').innerHTML = `<div class="wsum"><div class="left"><span class="tot-h">${fmtH(sumHours(list))}<small>h</small></span>${weekInvStatus(list, im)}</div>${moneyHtml(sumPay(list))}</div>${days}`;
+  $('#wkBody').innerHTML = `<div class="wsum"><div class="left"><span class="tot-h">${fmtH(sumHours(list))}<small>h</small></span>${isEmp(cur) ? weekBalStatus(ws, list) : weekInvStatus(list, im)}</div>${moneyHtml(sumPay(list))}</div>${days}`;
   const btn = $('#invWeekBtn');
+  btn.hidden = isEmp(cur); btn.closest('.foot').hidden = isEmp(cur);
   btn.disabled = !list.length;
   const wrecs = [...new Set(list.map(e => im.get(e.id)).filter(Boolean))];
   btn.textContent = wrecs.some(recChanged) ? 'Re-invoice Week' : list.length && list.every(e => im.has(e.id)) ? 'Re-send Invoice' : 'Invoice Week';
@@ -1689,7 +1716,7 @@ function miniFor(c){
 }
 function openSettings(){
   $('#coList').innerHTML = S.companies.map(c => {
-    const r = Number(c.rate) > 0 ? `${money.format(c.rate)}/h${superLabel(c.id) ? `<br><span class="small-muted">${superLabel(c.id)}</span>` : ''}` : '';
+    const r = salaryOf(c) ? `${money0.format(salaryOf(c))} p.a.${superLabel(c.id) ? `<br><span class="small-muted">${superLabel(c.id)}</span>` : ''}` : Number(c.rate) > 0 ? `${money.format(c.rate)}/h${superLabel(c.id) ? `<br><span class="small-muted">${superLabel(c.id)}</span>` : ''}` : '';
     return `<button class="co-item" data-co="${esc(c.id)}">${miniFor(c)}<span class="nm">${esc(c.name)}</span><span class="rt">${r}</span>${ICON_CHEV}</button>`;
   }).join('');
   paintMeSub(); paintHistSub(); paintBackupSub(); paintAbout(); $('#fySub').textContent = fyLabel(fyOf(Date.now()));
@@ -1711,6 +1738,10 @@ function openCoEditor(c, fromSettings){
   coEdit = c ? {id:c.id, isNew:false, color:colorOf(c), logo:c.logo || null, logoData:c.logoData || null, superMode:c.superMode || 'plus', fromSettings}
              : {id:newId(), isNew:true, color: PALETTE.find(p => !used.includes(p)) || PALETTE[used.length % PALETTE.length], logo:null, logoData:null, superMode:'plus', fromSettings};
   coEdit.round = c ? (Number(c.round) || 0) : 0; paintRound();
+  coEdit.kind = (c && c.kind) || 'client'; coForm.weekly.value = c && c.weekly ? c.weekly : ''; coForm.trackFrom.value = (c && c.trackFrom) || '';
+  coForm.salary.value = c && Number(c.salary) > 0 ? c.salary : ''; coEdit.workDays = c && Array.isArray(c.workDays) && c.workDays.length ? c.workDays.slice() : [0, 1, 2, 3, 4];
+  renderPh((c && c.holidays) || []); paintDays(); paintSalaryHint();
+  renderTerms((c && c.terms) || []); paintKind();
   $('#coTitle').textContent = c ? 'Edit Company' : 'New Company';
   coForm.name.value = c ? c.name : '';
   coForm.rate.value = c && Number(c.rate) > 0 ? c.rate : '';
@@ -1741,7 +1772,7 @@ async function useLogoFile(f){
   const blob = await openCrop(f, {aspect: 1, round: true, out: [320, 320], title: 'Adjust Logo'});
   if(!blob) return;
   try{ const r = await storeLogoBlob(blob, $('#logoBtn')); coEdit.logo = r.logo; coEdit.logoData = r.logoData; paintLogo(); }
-  catch(e){ toast(e && e.code === 'not_granted' ? 'Logos can’t be uploaded here' : 'Couldn’t use that image'); }
+  catch(e){ toast('Couldn’t use that image'); }
 }
 function loadImg(file){ return new Promise((res, rej) => { const url = URL.createObjectURL(file), im = new Image(); im.onload = () => { res(im); URL.revokeObjectURL(url); }; im.onerror = () => { rej(new Error('bad image')); URL.revokeObjectURL(url); }; im.src = url; }); }
 async function shrinkImage(file, max){
@@ -1771,7 +1802,9 @@ coForm.addEventListener('submit', async ev => {
   const rec = {id:coEdit.id, name, rate: v > 0 ? v : null, color:coEdit.color, logo:coEdit.logo || null, logoData:coEdit.logoData || null,
                superMode: coEdit.superMode, superPct: coForm.superPct.value === '' || !(sp >= 0) ? SG_DEFAULT : sp,
                billName: coForm.billName.value.trim(), billAbn: coForm.billAbn.value.replace(/\D/g,''), billAddress: coForm.billAddress.value.trim(), billEmail: coForm.billEmail.value.trim(),
-               invSuper: (company(coEdit.id) || {}).invSuper !== false, round: coEdit.round || 0};
+               invSuper: (company(coEdit.id) || {}).invSuper !== false, round: coEdit.round || 0,
+               kind: coEdit.kind || 'client', weekly: Number(coForm.weekly.value) || null, trackFrom: coForm.trackFrom.value || null, terms: readTerms(),
+               salary: coEdit.kind === 'employer' ? (Number(coForm.salary.value) || null) : null, workDays: (coEdit.workDays || [0, 1, 2, 3, 4]).slice().sort(), holidays: readPh()};
   const old = company(coEdit.id);
   const companies = coEdit.isNew ? [...S.companies, rec] : S.companies.map(c => c.id === rec.id ? rec : c);
   const from = coEdit.fromSettings;
@@ -2153,6 +2186,259 @@ async function shareExport(){
   await saveExport(r);
 }
 
+/* ---------- employer hours balance (school terms, weekly target) ---------- */
+function isEmp(cid){ const c = company(cid); return !!c && c.kind === 'employer'; }
+function termsOf(c){ return ((c && c.terms) || []).filter(t => t.start && t.end).map(t => [parseDate(t.start), parseDate(t.end)]).sort((p, q) => p[0] - q[0]); }
+/* target for one week: the weekly hours, scaled by how many weekdays fall inside a term (holiday weeks are 0) */
+const workDaysOf = () => [0, 1, 2, 3, 4];   // the target is spread over the school week; hours on any day, weekends included, still count
+function weekTarget(c, ws){
+  const T = Number(c.weekly) || 0, terms = termsOf(c), wd = workDaysOf(c), closed = new Set(c.holidays || []);
+  if(!T) return 0;
+  let d = 0;
+  wd.forEach(i => {
+    const day = addDays(ws, i);
+    if(terms.length && !terms.some(([s, e]) => day >= s && day <= e)) return;
+    if(closed.has(toDateInput(day))) return;
+    d++;
+  });
+  return T * d / wd.length;
+}
+function weekBalStatus(ws, list){
+  const c = company(cur); if(!c || !Number(c.weekly)) return '';
+  const t = weekTarget(c, ws), a = sumHours(list);
+  if(t === 0){
+    if(!a) return '<span class="ist hol"><i></i>School holidays</span>';
+    const nt = termsOf(c).find(([s]) => s > ws);
+    return `<span class="ist paid"><i></i>${fmtH(Math.round(a * 10) / 10)} h banked for ${nt ? termLabel(c, nt) : 'next term'}</span>`;
+  }
+  if(ws >= weekStart(0)) return `<span class="ist due"><i></i>${fmtH(a)} of ${fmtH(Math.round(t * 10) / 10)} h so far</span>`;
+  const d = a - t;
+  if(Math.abs(d) < 0.05) return '<span class="ist paid"><i></i>On target</span>';
+  return d > 0 ? `<span class="ist paid"><i></i>${fmtH(Math.round(d * 10) / 10)} h over</span>` : `<span class="ist und"><i></i>${fmtH(Math.round(-d * 10) / 10)} h under</span>`;
+}
+function termLabel(c, term){
+  const ts = termsOf(c), yr = new Date(term[0]).getFullYear();
+  return 'Term ' + (ts.filter(t => new Date(t[0]).getFullYear() === yr && t[0] <= term[0]).length);
+}
+function balanceInfo(cid){
+  const c = company(cid), T = Number(c.weekly) || 0, mine = entriesFor(cid), cw = weekStart(0), today = dayStart(Date.now());
+  const first = c.trackFrom ? startOfWeek(parseDate(c.trackFrom)) : (mine.length ? startOfWeek(mine[0].start) : cw);
+  const weeks = []; let bal = 0;
+  for(let ws = first; ws < cw; ws = addDays(ws, 7)){
+    const we = addDays(ws, 7), actual = sumHours(mine.filter(e => e.start >= ws && e.start < we)), target = weekTarget(c, ws);
+    bal += actual - target;
+    weeks.push({ws, actual, target, bal, holiday: target === 0});
+  }
+  const curWeek = {ws:cw, actual: sumHours(mine.filter(e => e.start >= cw && e.start < addDays(cw, 7))), target: weekTarget(c, cw)};
+  const terms = termsOf(c), inTerm = terms.find(([s, e]) => today >= s && today <= e) || null, next = terms.find(([s]) => s > today) || null;
+  let plan = null;
+  const term = inTerm || next;
+  if(term && T){
+    const recent = weeks.filter(w => !w.holiday && w.target > 0).slice(-4);
+    const pace = recent.length ? recent.reduce((s, w) => s + w.actual * T / w.target, 0) / recent.length : T;
+    const recentRatio = pace / T;
+    /* history: every past term week (before this week), keyed by which term of the year it was and which week of that term */
+    const termOfWeek = ws => terms.find(([s, e]) => ws <= e && addDays(ws, 6) >= s) || null;
+    const keyOf = ws => {
+      const t = termOfWeek(ws); if(!t) return null;
+      const yr = new Date(t[0]).getFullYear();
+      return {yr, ts: t[0], no: terms.filter(x => new Date(x[0]).getFullYear() === yr && x[0] <= t[0]).length, wit: Math.round((ws - startOfWeek(t[0])) / (7 * 864e5))};
+    };
+    const hist = [];
+    const earliest = mine.reduce((m, e) => Math.min(m, e.start), Infinity);
+    if(mine.length) for(let ws = startOfWeek(earliest); ws < cw; ws = addDays(ws, 7)){
+      const t = weekTarget(c, ws), k = t ? keyOf(ws) : null; if(!k) continue;
+      const a = sumHours(mine.filter(e => e.start >= ws && e.start < addDays(ws, 7)));
+      if(a > 0) hist.push(Object.assign({ratio: a / t}, k));   // weeks with nothing logged are gaps in the record, not data
+    }
+    const avg = l => l.reduce((s, h) => s + h.ratio, 0) / l.length;
+    const basis = {years: new Set(), terms: 0};
+    const ratioFor = ws => {
+      const k = keyOf(ws); if(!k) return recentRatio;
+      /* the same week of the matching term in an earlier year (that term started within about six weeks of the same date) */
+      const near = h => { const d = ((k.ts - h.ts) / 864e5) % 365.25; return Math.min(d, 365.25 - d) < 45; };
+      const same = hist.filter(h => h.wit === k.wit && h.yr < k.yr && near(h));
+      if(same.length){ same.forEach(h => basis.years.add(h.yr)); return avg(same); }
+      const wit = hist.filter(h => h.wit === k.wit && !(h.yr === k.yr && h.no === k.no));
+      if(wit.length >= 2){ basis.terms++; return (avg(wit) + recentRatio) / 2; }
+      return recentRatio;
+    };
+    let R = 0, eq = 0, futureWeeks = 0, expSum = 0, expCw = 0;
+    for(let ws = cw; ws <= term[1]; ws = addDays(ws, 7)){
+      const t = weekTarget(c, ws);
+      let ex = t ? t * ratioFor(ws) : 0;
+      if(ws === cw){ ex = Math.max(ex, curWeek.actual); expCw = ex; }
+      R += t; eq += t / T; expSum += ex; futureWeeks++;
+    }
+    const toEven = R - bal;   // hours from the start of this week to finish the term even
+    const suggested = curWeek.target > 0 ? Math.max(0, expSum > 0 ? toEven * expCw / expSum : toEven * curWeek.target / R) : 0;
+    const needed = Math.max(0, R - bal - curWeek.actual);
+    const why = basis.years.size ? `based on ${termLabel(c, term)} in ${[...basis.years].sort().join(' and ')}` : basis.terms ? 'based on your past terms' : `at your recent ${fmtH(Math.round(pace * 10) / 10)} h a week`;
+    /* holiday hours worked since the previous term ended are banked toward this term (they're already in the balance) */
+    const prevT = terms.filter(([s, e]) => e < term[0]).pop(), bFrom = prevT ? addDays(prevT[1], 1) : addDays(term[0], -42);
+    const banked = sumHours(mine.filter(e => e.start >= bFrom && e.start < term[0]));
+    plan = {banked, term, isCurrent: !!inTerm, label: termLabel(c, term), R, eq, needed, perWeek: eq > 0 ? needed / eq : 0, pace, endBal: bal + expSum - R, futureWeeks, suggested, why, learnedFrom: hist.length};
+  }
+  return {c, T, first, weeks, bal, cur: curWeek, inTerm, next, plan, hasTerms: terms.length > 0};
+}
+const sgn = v => (v > 0.04 ? '+' : v < -0.04 ? '−' : '') + fmtH(Math.round(Math.abs(v) * 10) / 10);
+function balChart(info){
+  const pts = info.weeks;
+  if(pts.length < 2) return '<p class="empty" style="padding:22px 8px">Your graph starts once you have two full weeks logged.</p>';
+  const W = 340, H = 170, L = 34, R = 10, T = 10, B = 22, proj = info.plan;
+  const n = pts.length + (proj ? proj.futureWeeks : 0);
+  const vals = pts.map(p => p.bal).concat(proj ? [proj.endBal] : []);
+  const top = Math.max(2, ...vals.map(Math.abs)), m = top * 1.15;
+  const x = i => L + (W - L - R) * (n <= 1 ? 0 : i / (n - 1)), y = v => T + (H - T - B) * (1 - (v + m) / (2 * m)), z = y(0);
+  const bw = (W - L - R) / Math.max(1, n - 1);
+  let bands = '';
+  pts.forEach((p, i) => { if(p.holiday) bands += `<rect x="${(x(i) - bw / 2).toFixed(1)}" y="${T}" width="${bw.toFixed(1)}" height="${H - T - B}" fill="rgba(255,255,255,.05)"/>`; });
+  if(proj){ for(let k = 0; k < proj.futureWeeks; k++){ const ws = addDays(info.cur.ws, k * 7); if(weekTarget(info.c, ws) === 0){ const i = pts.length + k; bands += `<rect x="${(x(i) - bw / 2).toFixed(1)}" y="${T}" width="${bw.toFixed(1)}" height="${H - T - B}" fill="rgba(255,255,255,.05)"/>`; } } }
+  const line = pts.map((p, i) => `${x(i).toFixed(1)},${y(p.bal).toFixed(1)}`);
+  const area = `M${x(0).toFixed(1)},${z.toFixed(1)} L${line.join(' L')} L${x(pts.length - 1).toFixed(1)},${z.toFixed(1)} Z`;
+  const last = pts[pts.length - 1];
+  let ticks = '', prevM = -1, prevX = -99;
+  for(let i = 0; i < n; i++){
+    const ws = i < pts.length ? pts[i].ws : addDays(info.cur.ws, (i - pts.length) * 7), mo = new Date(ws).getMonth();
+    if(mo !== prevM && x(i) - prevX > 22){ ticks += `<text x="${x(i).toFixed(1)}" y="${H - 6}" text-anchor="middle">${new Intl.DateTimeFormat('en-AU', {month:'short'}).format(ws)}</text>`; prevX = x(i); }
+    prevM = mo;
+  }
+  const lab = Math.round(top * 10) / 10;
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Hours balance over time">
+    <defs><clipPath id="cUp"><rect x="0" y="0" width="${W}" height="${z.toFixed(1)}"/></clipPath><clipPath id="cDn"><rect x="0" y="${z.toFixed(1)}" width="${W}" height="${H}"/></clipPath></defs>
+    ${bands}
+    <line x1="${L}" x2="${W - R}" y1="${z.toFixed(1)}" y2="${z.toFixed(1)}" stroke="#4A4F57" stroke-dasharray="3 3"/>
+    <path d="${area}" fill="rgba(108,203,139,.28)" clip-path="url(#cUp)"/><path d="${area}" fill="rgba(76,201,224,.28)" clip-path="url(#cDn)"/>
+    <polyline points="${line.join(' ')}" fill="none" stroke="#E9E4D8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+    ${proj ? `<line x1="${x(pts.length - 1).toFixed(1)}" y1="${y(last.bal).toFixed(1)}" x2="${x(n - 1).toFixed(1)}" y2="${y(proj.endBal).toFixed(1)}" stroke="#5195C0" stroke-width="2" stroke-dasharray="4 4"/><circle cx="${x(n - 1).toFixed(1)}" cy="${y(proj.endBal).toFixed(1)}" r="3.5" fill="#5195C0"/>` : ''}
+    <circle cx="${x(pts.length - 1).toFixed(1)}" cy="${y(last.bal).toFixed(1)}" r="4" fill="#E9E4D8"/>
+    <text x="${L - 6}" y="${(y(lab) + 3).toFixed(1)}" text-anchor="end">+${fmtH(lab)}</text>
+    <text x="${L - 6}" y="${(z + 3).toFixed(1)}" text-anchor="end">0</text>
+    <text x="${L - 6}" y="${(y(-lab) + 3).toFixed(1)}" text-anchor="end">−${fmtH(lab)}</text>
+    ${ticks}
+  </svg>`;
+}
+function weekBars(info){
+  const T = info.T, all = info.weeks.concat([{ws:info.cur.ws, actual:info.cur.actual, target:info.cur.target, holiday:info.cur.target === 0, current:true}]).slice(-12);
+  const W = 340, H = 150, L = 30, R = 6, Tp = 10, B = 22, max = Math.max(T * 1.4, ...all.map(w => w.actual), 1);
+  const bw = (W - L - R) / all.length, y = v => Tp + (H - Tp - B) * (1 - v / max);
+  let g = '';
+  all.forEach((w, i) => {
+    const x0 = L + i * bw + bw * 0.18, wd = bw * 0.64, h = Math.max(0, (H - Tp - B) - (y(w.actual) - Tp));
+    const col = w.holiday ? '#4A4F57' : w.current ? 'rgba(81,149,192,.65)' : w.actual >= w.target - 0.05 ? '#6CCB8B' : '#4CC9E0';
+    if(w.actual > 0) g += `<rect x="${x0.toFixed(1)}" y="${y(w.actual).toFixed(1)}" width="${wd.toFixed(1)}" height="${h.toFixed(1)}" rx="3" fill="${col}"/>`;
+    if(w.target > 0) g += `<line x1="${(x0 - 2).toFixed(1)}" x2="${(x0 + wd + 2).toFixed(1)}" y1="${y(w.target).toFixed(1)}" y2="${y(w.target).toFixed(1)}" stroke="#E9E4D8" stroke-width="2" stroke-linecap="round"/>`;
+    else g += `<text x="${(x0 + wd / 2).toFixed(1)}" y="${(H - B - 4).toFixed(1)}" text-anchor="middle">H</text>`;
+    if(all.length <= 8 || i % 2 === all.length % 2 || w.current){ const d = new Date(w.ws); g += `<text x="${(x0 + wd / 2).toFixed(1)}" y="${H - 6}" text-anchor="middle">${d.getDate()}/${d.getMonth() + 1}</text>`; }
+  });
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Hours each week against your target">
+    <line x1="${L}" x2="${W - R}" y1="${y(0)}" y2="${y(0)}" stroke="#4A4F57"/>
+    <text x="${L - 6}" y="${(y(T) + 3).toFixed(1)}" text-anchor="end">${fmtH(T)}</text><text x="${L - 6}" y="${y(0) + 3}" text-anchor="end">0</text>
+    ${g}</svg>`;
+}
+/* banked hours: what each term finished over or under, adding up for good (never resets each year) */
+function termBank(cid){
+  const c = company(cid), terms = termsOf(c), mine = entriesFor(cid), today = dayStart(Date.now()), lastDone = weekStart(-1);
+  const first = c.trackFrom ? startOfWeek(parseDate(c.trackFrom)) : (mine.length ? startOfWeek(Math.min(...mine.map(e => e.start))) : weekStart(0));
+  const out = []; let prevEnd = null;
+  terms.forEach(t => {
+    const [ts, te] = t;
+    /* a term owns its own weeks plus the holiday weeks just before it (holiday hours are banked toward it) */
+    const from = Math.max(prevEnd != null ? addDays(startOfWeek(prevEnd), 7) : startOfWeek(ts), first);
+    prevEnd = te;
+    if(te < first || ts > today) return;
+    const done = te < today, stop = done ? startOfWeek(te) : Math.min(startOfWeek(te), lastDone);
+    let act = 0, tgt = 0;
+    for(let ws = from; ws <= stop; ws = addDays(ws, 7)){
+      act += sumHours(mine.filter(e => e.start >= ws && e.start < addDays(ws, 7)));
+      tgt += weekTarget(c, ws);
+    }
+    out.push({t, label: `${termLabel(c, t)}, ${new Date(ts).getFullYear()}`, done, act, tgt, bal: act - tgt});
+  });
+  return out;
+}
+function bankHtml(cid){
+  const bank = termBank(cid), done = bank.filter(b => b.done), live = bank.find(b => !b.done);
+  if(!done.length && !live) return '';
+  const r1 = v => fmtH(Math.round(v * 10) / 10), cls = v => v > 0.04 ? 'pos' : v < -0.04 ? 'neg' : '';
+  const total = done.reduce((s, b) => s + b.bal, 0);
+  const rng = t => `${dmFmt.format(t[0])} – ${dmFmt.format(t[1])}`;
+  const line = (b, sub) => `<div class="sum-row"><span style="color:var(--ink)">${esc(b.label)}<span class="sub">${sub}</span></span><span><span class="${cls(b.bal)}">${sgn(b.bal)} h</span><span class="sub">${r1(b.act)} of ${r1(b.tgt)} h</span></span></div>`;
+  return `<p class="sec">Banked Hours</p>
+    <div class="card bal-card bank-card">
+      <span class="big ${cls(total)}">${sgn(total)}<small>h</small></span>
+      <p class="l">${!done.length ? 'No completed terms yet' : total > 0.04 ? `You can afford not to work ${r1(total)} h` : total < -0.04 ? `You have ${r1(-total)} h to make up` : 'Right on target'}</p>
+    </div>
+    <div class="summary" style="margin-top:10px">
+      ${live ? line(live, 'In progress, so far') : ''}
+      ${done.slice().reverse().map(b => line(b, rng(b.t))).join('')}
+    </div>`;
+}
+function renderBalance(){
+  const box = $('#balWrap'), c = company(cur);
+  if(!c) return;
+  if(!Number(c.weekly)){ box.innerHTML = `<div class="card bal-card"><p class="l" style="margin:0 0 12px">Set your weekly hours and term dates to see your balance.</p><button type="button" class="btn pri" data-act="editCo">Set Up Hours</button></div>`; return; }
+  const info = balanceInfo(cur), b = info.bal, cw = info.cur;
+  const pos = b > 0.04, neg = b < -0.04;
+  let thisWeek;
+  const r1 = v => fmtH(Math.round(v * 10) / 10), range = fmtRange(cw.ws, addDays(cw.ws, 6));
+  const head = sub => `<div class="bw-head"><div><span class="t">This Week</span><span class="d">${range}</span></div><div class="bw-num"><span class="v">${fmtH(cw.actual)}<small>h</small></span><span class="d">${sub}</span></div></div>`;
+  if(cw.target === 0) thisWeek = `<div class="card bw">${head('school holidays')}<div class="bw-foot"><span>${cw.actual ? `<b>${r1(cw.actual)} h</b> banked toward ${info.next ? termLabel(c, info.next) : 'next term'}` : 'Any hours you work count toward next term'}</span></div></div>`;
+  else{
+    const sug = info.plan && info.plan.isCurrent ? info.plan.suggested : cw.target;
+    const scale = Math.max(cw.target, sug, cw.actual) || 1, left = sug - cw.actual;
+    thisWeek = `<div class="card bw">${head(`of ${r1(cw.target)} h target`)}
+      <div class="prog${left <= 0.04 ? ' done' : ''}"><i style="width:${Math.min(100, cw.actual / scale * 100).toFixed(1)}%"></i><b style="left:calc(${Math.min(100, sug / scale * 100).toFixed(1)}% - 1px)" title="Suggested"></b></div>
+      <div class="bw-foot"><span>Suggested <b>${r1(sug)} h</b> to stay on track</span><span>${left > 0.04 ? `${r1(left)} h to go` : 'On track'}</span></div>
+    </div>`;
+  }
+  let planHtml = '';
+  const p = info.plan, row = (k, v) => `<div class="sum-row"><span>${k}</span><span>${v}</span></div>`;
+  if(p){
+    const wl = Math.ceil(p.eq - 0.01);
+    const head = p.isCurrent ? `${p.label} ends ${fmtDay(p.term[1])}` : `Holidays until ${fmtDay(p.term[0])}`;
+    const r1 = v => fmtH(Math.round(v * 10) / 10);
+    const tile = (k, v, sub, cls) => `<div class="tile2${cls ? ' ' + cls : ''}"><span class="k">${k}</span><span class="v">${v}</span>${sub ? `<span class="s">${sub}</span>` : ''}</div>`;
+    const fc = p.endBal > 0.04 ? 'pos' : p.endBal < -0.04 ? 'neg' : '';
+    planHtml = `<p class="sec">${p.isCurrent ? p.label : 'Next Term'}</p><div class="tgrid">
+      ${tile(p.isCurrent ? 'Ends' : 'Starts', fmtDay(p.isCurrent ? p.term[1] : p.term[0]), p.isCurrent ? `${wl} ${wl === 1 ? 'week' : 'weeks'} left` : `${p.label}, until ${fmtDay(p.term[1])}`)}
+      ${tile('Still to work', `${r1(p.needed)}<small>h</small>`, `of ${r1(p.R)} h ${p.isCurrent ? 'left this term' : 'next term'}`)}
+      ${tile('To finish even', `${r1(p.perWeek)}<small>h / week</small>`, '')}
+      ${tile('Forecast at term end', `<span class="${fc}">${sgn(p.endBal)}<small>h</small></span>`, p.why)}
+      ${p.banked > 0.04 ? tile('Banked from holidays', `<span class="pos">${r1(p.banked)}<small>h</small></span>`, `already counted toward ${p.label}`, 'wide') : ''}
+    </div>`;
+  }else if(info.hasTerms){
+    planHtml = `<div class="card bal-card" style="margin-top:12px"><p class="l" style="margin:0 0 12px">No upcoming term dates. Add next year’s terms to keep the forecast going.</p><button type="button" class="btn glass" data-act="editCo">Add Term Dates</button></div>`;
+  }else{
+    planHtml = `<div class="card bal-card" style="margin-top:12px"><p class="l" style="margin:0 0 12px">Add your term dates so holidays aren’t counted against you.</p><button type="button" class="btn glass" data-act="editCo">Add Term Dates</button></div>`;
+  }
+  box.innerHTML = `<div class="card bal-card">
+      <span class="big ${pos ? 'pos' : neg ? 'neg' : ''}">${sgn(b)}<small>h</small></span>
+      <p class="l">${pos ? 'Over' : neg ? 'Under' : 'On'} target up to the end of last week</p>
+    </div>
+    ${thisWeek}
+    ${planHtml}
+    ${bankHtml(cur)}
+    <div class="card chart"><h3>Each Week</h3>${weekBars(info)}<p class="legend"><i class="lg-tgt"></i>Target <i class="lg-ok"></i>Met <i class="lg-under"></i>Under</p></div>
+    <div class="card chart"><h3>Balance Over Time</h3>${balChart(info)}<p class="legend"><i class="lg-line"></i>Balance <i class="lg-dash"></i>Forecast <i class="lg-hol"></i>Holidays</p></div>`;
+}
+/* term date rows in the company sheet */
+function paintKind(){
+  document.querySelectorAll('#kindSeg [data-kind]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.kind === coEdit.kind)));
+  const emp = coEdit.kind === 'employer';
+  $('#empBox').hidden = !emp; $('#billBox').hidden = emp;
+  $('#rateWrap2').hidden = emp; $('#salaryWrap').hidden = !emp;
+}
+function paintDays(){ document.querySelectorAll('#daySeg [data-wd]').forEach(b => b.setAttribute('aria-pressed', String((coEdit.workDays || []).includes(Number(b.dataset.wd))))); }
+function paintSalaryHint(){ const v = Number(coForm.salary.value); $('#salaryHint').textContent = v > 0 ? `About ${money0.format(v / 26)} a fortnight` : ''; }
+coForm.salary.addEventListener('input', paintSalaryHint);
+/* Barker College staff dates from barker.college/about-barker/term-dates (staff days included); public holidays that fall in term */
+const BARKER = {
+  terms:[['2026-01-27','2026-04-02'],['2026-04-20','2026-06-26'],['2026-07-20','2026-09-25'],['2026-10-12','2026-12-04'],
+         ['2027-01-22','2027-04-09'],['2027-04-27','2027-06-25'],['2027-07-19','2027-09-24'],['2027-10-11','2027-12-03']],
+  holidays:['2026-04-27','2026-06-08','2027-01-26','2027-03-26','2027-03-29','2027-06-14']
+};
+
 /* ---------- financial year (1 July to 30 June) and tax set-aside ---------- */
 const fyDlg = $('#fyDlg'), fyExpDlg = $('#fyExpDlg');
 let fyYear = null;
@@ -2177,13 +2463,15 @@ function incomeTax(ti, y){
   return t + Math.max(0, ti) * 0.02;
 }
 function taxEstimate(y){
-  const [a, b] = fyRange(y), now = Date.now();
-  const earned = E.filter(e => e.start >= a && e.start < b).reduce((s, e) => s + billOf(e), 0);
+  const [a, b] = fyRange(y), now = Date.now(), inFY = E.filter(e => e.start >= a && e.start < b);
+  const earned = inFY.filter(e => !isEmp(e.companyId)).reduce((s, e) => s + billOf(e), 0);
+  const wagesYTD = inFY.filter(e => isEmp(e.companyId) && !salaryOf(company(e.companyId))).reduce((s, e) => { const p = payOf(e); return s + (p ? p.wage : 0); }, 0);
+  const salaries = S.companies.reduce((t, c) => t + salaryWage(c), 0);
   const f = now >= b ? 1 : Math.max(1 / 12, (now - a) / (b - a));
-  const projected = earned / f, other = Math.max(0, Number(profile().otherIncome) || 0);
+  const projected = earned / f, wages = wagesYTD / f + salaries, other = Math.max(0, Number(profile().otherIncome) || 0) + wages;
   const extra = incomeTax(other + projected, y) - incomeTax(other, y);
   const rate = projected > 0 ? Math.ceil(extra / projected * 100) / 100 : 0;
-  return {rate, projected, earned, other, tax: earned * rate};
+  return {rate, projected, earned, other, wages, tax: earned * rate};
 }
 function fyStats(y){
   const [a, b] = fyRange(y), sh = E.filter(e => e.start >= a && e.start < b).sort((p, q) => p.start - q.start);
@@ -2228,7 +2516,7 @@ function renderFY(){
   $('#fyTaxAmt').textContent = money.format(t.tax + st.gst);
   $('#fyTaxPct').textContent = `${Math.round(t.rate * 100)}%`;
   $('#fyTaxNote').textContent = t.earned > 0
-    ? `${Math.round(t.rate * 100)}% of ${money.format(t.earned)} earned${st.gst > 0.004 ? `, plus ${money.format(st.gst)} GST you owe the ATO` : ''}. Based on about ${money0.format(Math.round(t.projected / 100) * 100)} a year from contracting.`
+    ? `${Math.round(t.rate * 100)}% of ${money.format(t.earned)} earned${st.gst > 0.004 ? `, plus ${money.format(st.gst)} GST you owe the ATO` : ''}. Based on about ${money0.format(Math.round(t.projected / 100) * 100)} a year from contracting${t.wages > 0 ? `, on top of about ${money0.format(Math.round(t.wages / 100) * 100)} in wages logged here` : ''}.`
     : 'Nothing earned in this financial year yet.';
   if(document.activeElement !== $('#fyOther')) $('#fyOther').value = p.otherIncome || '';
   $('#fyBody').innerHTML = `
@@ -2344,7 +2632,7 @@ async function shareFY(){
   if(await saveBlob(f.pdfName, f.pdf)) fyExpDlg.close();
 }
 
-const BACKUP_VARIANT = 'main';
+const BACKUP_VARIANT = 'school';
 /* ---------- backup: export everything to a file, import it back ---------- */
 const impDlg = $('#impDlg');
 let pendingBackup = null;
@@ -2367,11 +2655,11 @@ async function buildBackup(){
 function paintBackupSub(){ const el = $('#bkSub'); if(el) el.textContent = S.lastBackup ? 'Last ' + dmFmt.format(S.lastBackup) : ''; }
 async function exportBackup(){
   toast('Preparing backup…');
-  const b = await buildBackup(), name = `gigsy-backup-${toDateInput(Date.now())}.json`;
+  const b = await buildBackup(), name = `hours-backup-${toDateInput(Date.now())}.json`;
   const blob = new Blob([JSON.stringify(b)], {type:'application/json'});
   let done = false;
   try{
-    const file = new File([blob], name, {type:'application/json'}), data = {files:[file], title:'Gigsy backup'};
+    const file = new File([blob], name, {type:'application/json'}), data = {files:[file], title:'Hours backup'};
     if(navigator.canShare && navigator.canShare(data)){ await navigator.share(data); done = true; }
   }catch(e){ if(e && e.name === 'AbortError') return; }
   if(!done) done = await saveBlob(name, blob);
@@ -2382,7 +2670,7 @@ $('#importFile').addEventListener('change', async ev => {
   if(!f) return;
   let b = null;
   try{ b = JSON.parse(await f.text()); }catch(e){}
-  if(!b || b.app !== 'hours' || !b.state || !Array.isArray(b.entries)){ toast('That file isn’t a Gigsy or Hours backup'); return; }
+  if(!b || b.app !== 'hours' || !b.state || !Array.isArray(b.entries)){ toast('That file isn’t an Hours backup'); return; }
   pendingBackup = b;
   const st = b.state, row = (k, v) => `<div class="sum-row"><span>${k}</span><span>${v}</span></div>`;
   $('#impInfo').innerHTML = row('Saved', b.exported ? longFmt.format(b.exported) : '–') + row('From', b.variant === 'school' ? 'School version' : 'Main version')
@@ -2417,61 +2705,6 @@ async function applyBackup(){
   toast('Backup restored');
 }
 impDlg.addEventListener('click', e => { if(e.target === impDlg) impDlg.close(); });
-
-/* ---------- access approval: new accounts wait until you approve them ---------- */
-let isAdmin = false, accessUnsub = null, accUnsub = null, accList = [];
-function stopAccess(){ [accessUnsub, accUnsub].forEach(f => { try{ f && f(); }catch(e){} }); accessUnsub = accUnsub = null; accList = []; }
-function enterApp(){ mode = 'db'; showOnly(null); startData(); }
-function showWait(st){
-  mode = 'waiting'; showOnly('waitView');
-  const m = {pending: ['Waiting for approval', 'Your account has been sent for approval. You’ll get in automatically as soon as it’s approved, so you can leave this open.'],
-             denied: ['Not approved', 'Your request wasn’t approved. Contact the app owner if you think that’s a mistake.'],
-             removed: ['Access removed', 'Your access to this app has been removed. Contact the app owner if you need it back.'],
-             error: ['Can’t check access', 'Couldn’t reach the server to check your access. Check your connection and try again.']}[st] || ['Waiting for approval', ''];
-  $('#waitTitle').textContent = m[0]; $('#waitMsg').textContent = m[1];
-}
-async function checkAccess(user){
-  /* the owner is recognised by the database rules: only they can list access requests */
-  isAdmin = await fs.collection('access').where('status', '==', 'pending').limit(1).get().then(() => true).catch(() => false);
-  if(isAdmin){ mode = 'admin'; showOnly('adminView');  renderAccess(); watchRequests(); return; }
-  const ref = fs.doc('access/' + user.uid);
-  const me = user.uid;
-  accessUnsub = ref.onSnapshot(snap => {
-    if(uid !== me || isAdmin) return;   /* ignore a listener left over from another sign-in */
-    if(!snap.exists){ ref.set({email: user.email || '', status: 'pending', requested: Date.now()}).catch(() => {}); showWait('pending'); return; }
-    const st = (snap.data() || {}).status;
-    if(st === 'approved'){ if(mode !== 'db') enterApp(); }
-    else{ if(mode === 'db'){ stopData(); S = blank(); E = []; document.querySelectorAll('dialog[open]').forEach(d => d.close()); if(location.hash) location.hash = ''; } showWait(st || 'pending'); }
-  }, () => { if(mode !== 'db') showWait('error'); });
-}
-function watchRequests(){
-  accUnsub = fs.collection('access').onSnapshot(q => {
-    accList = q.docs.map(d => Object.assign({uid: d.id}, d.data())).sort((a, b) => (b.requested || 0) - (a.requested || 0));
-    const n = accList.filter(a => a.status === 'pending').length;
-    $('#accPendHead').textContent = n ? `Waiting (${n})` : 'Waiting';
-    renderAccess();
-  }, () => {});
-}
-function renderAccess(){
-  const when = ms => ms ? longFmt.format(ms) : '';
-  const row = (a, btns) => `<div class="acc-row"><div class="acc-info"><span class="t">${esc(a.email || a.uid)}</span><span class="s">${a.status === 'approved' ? 'Approved ' + when(a.approvedAt) : 'Requested ' + when(a.requested)}</span></div>${btns}</div>`;
-  const pend = accList.filter(a => a.status === 'pending'), ok = accList.filter(a => a.status === 'approved'), no = accList.filter(a => a.status === 'denied' || a.status === 'removed');
-  $('#accPending').innerHTML = pend.length ? pend.map(a => row(a, `<button type="button" class="btn pri sm" data-acc="approve" data-uid="${esc(a.uid)}">Approve</button><button type="button" class="btn glass sm" data-acc="deny" data-uid="${esc(a.uid)}">Deny</button>`)).join('') : '<p class="empty" style="padding:8px">No one waiting</p>';
-  $('#accApproved').innerHTML = ok.length ? ok.map(a => row(a, `<button type="button" class="btn glass sm" data-acc="remove" data-uid="${esc(a.uid)}">Remove</button>`)).join('') : '<p class="empty" style="padding:8px">No one yet</p>';
-  $('#accOther').innerHTML = no.map(a => row(a, `<button type="button" class="btn glass sm" data-acc="approve" data-uid="${esc(a.uid)}">Approve</button>`)).join('');
-  $('#accOtherWrap').hidden = !no.length;
-}
-async function accAction(kind, uid, btn){
-  const ref = fs.doc('access/' + uid);
-  const go = async () => {
-    try{
-      if(kind === 'approve') await ref.update({status: 'approved', approvedAt: Date.now()});
-      else await ref.update({status: kind === 'deny' ? 'denied' : 'removed', changedAt: Date.now()});
-      toast(kind === 'approve' ? 'Approved' : kind === 'deny' ? 'Request denied' : 'Access removed');
-    }catch(e){ toast('Couldn’t update. Check the database rules.'); }
-  };
-  if(kind === 'remove') confirmTap(btn, 'Tap to Remove', go); else go();
-}
 
 /* ---------- your details ---------- */
 const meDlg = $('#meDlg'), meForm = $('#meForm');
@@ -2623,13 +2856,15 @@ document.addEventListener('click', async ev => {
   const open = t.closest('[data-open]'); if(open){ openCompany(open.dataset.open); return; }
   const editBtn = t.closest('[data-edit]'); if(editBtn){ const e = E.find(x => x.id === editBtn.dataset.edit); if(e) openShift({type:'edit', id:e.id}, e); return; }
   const wk = t.closest('[data-week]'); if(wk){ openWeek(Number(wk.dataset.week)); return; }
-  const ac = t.closest('[data-acc]'); if(ac){ accAction(ac.dataset.acc, ac.dataset.uid, ac); return; }
   const ad = t.closest('[data-addday]'); if(ad){ addShiftOn(ad.dataset.addday); return; }
   const md = t.closest('[data-mday]'); if(md){ calSel = md.dataset.mday; const d = new Date(parseDate(calSel)); if(d.getMonth() !== new Date(calM).getMonth()) calM = new Date(d.getFullYear(), d.getMonth(), 1).getTime(); renderCalPg(); openDay(calSel, true); return; }
   const evb = t.closest('[data-ev]'); if(evb){ openEvent(events().find(e => e.id === evb.dataset.ev)); return; }
   const eg = t.closest('[data-evgo]'); if(eg){ const cid = eg.dataset.evcid; if(cid && known(cid)) openCalendar(eg.dataset.evgo, cid); else if(eg.dataset.evid) openEvent(events().find(e => e.id === eg.dataset.evid)); return; }
   const tabBtn = t.closest('#seg [data-tab]'); if(tabBtn){ goTab(Number(tabBtn.dataset.tab)); return; }
   const coItem = t.closest('[data-co]'); if(coItem){ openCoEditor(company(coItem.dataset.co), true); return; }
+  const trm = t.closest('[data-term]'); if(trm){ openRange('term', Number(trm.dataset.term)); return; }
+  const phb = t.closest('[data-ph]'); if(phb){ openRange('ph', Number(phb.dataset.ph)); return; }
+  const rp = t.closest('[data-rpick]'); if(rp){ if(rp.getAttribute('aria-expanded') === 'true') closeRPicks(); else openRPick(rp.dataset.rpick); return; }
   const calEl = t.closest('.cal');
   if(calEl){
     const day = t.closest('[data-day]'); if(day){ cals[calEl.id].set(day.dataset.day); return; }
@@ -2648,6 +2883,8 @@ document.addEventListener('click', async ev => {
   const tm = t.closest('[data-terms]'); if(tm){ meEdit.terms = Number(tm.dataset.terms); paintMeSegs(); return; }
   const sup = t.closest('[data-super]'); if(sup){ coEdit.superMode = sup.dataset.super; paintSuper(); return; }
   const rnd = t.closest('[data-round]'); if(rnd){ coEdit.round = Number(rnd.dataset.round); paintRound(); return; }
+  const wdb = t.closest('[data-wd]'); if(wdb){ const d = Number(wdb.dataset.wd), l = coEdit.workDays || []; coEdit.workDays = l.includes(d) ? (l.length > 1 ? l.filter(x => x !== d) : l) : [...l, d]; paintDays(); return; }
+  const kd = t.closest('[data-kind]'); if(kd){ coEdit.kind = kd.dataset.kind; if(coEdit.kind === 'employer' && !coForm.weekly.value) coForm.weekly.value = 22.8; paintKind(); return; }
   const brk = t.closest('[data-brk]'); if(brk){ setBreak(Number(form.brk.value) + Number(brk.dataset.brk)); return; }
   const b = t.closest('[data-act]'); if(!b) return;
   const act = b.dataset.act;
@@ -2685,14 +2922,9 @@ document.addEventListener('click', async ev => {
   else if(act === 'closeExp') expDlg.close();
   else if(act === 'myDetails') openMe();
   else if(act === 'history') openHist();
-  else if(act === 'signOut'){ if(setDlg.open) setDlg.close(); fbAuth.signOut(); }
-  else if(act === 'signUp') signUp();
+  else if(act === 'signOut'){ setDlg.close(); fbAuth.signOut(); }
   else if(act === 'resetPw') resetPw();
   else if(act === 'saveCfg') saveConfig();
-  else if(act === 'cropCancel') cropDone(false);
-  else if(act === 'cropUse') cropDone(true);
-  else if(act === 'cropReset') cropFit();
-  else if(act === 'cropIn' || act === 'cropOut'){ if(crop) cropZoomTo(crop.z * (act === 'cropIn' ? 1.15 : 1 / 1.15), cropBox.clientWidth / 2, cropBox.clientHeight / 2); }
   else if(act === 'exportBackup') exportBackup();
   else if(act === 'importBackup') $('#importFile').click();
   else if(act === 'closeImp'){ impDlg.close(); pendingBackup = null; }
@@ -2706,6 +2938,23 @@ document.addEventListener('click', async ev => {
   else if(act === 'addEventDay') openEvent(null, calSel, cur === 'other' ? null : cur);
   else if(act === 'evAllDay'){ evAll = !evAll; paintEvAll(); }
   else if(act === 'delEv'){ const id = evEditId; confirmTap(b, 'Tap Again to Delete', async () => { evDlg.close(); await deleteEventUndo(id); }); }
+  else if(act === 'barkerTerms'){
+    const have = readTermsRaw().filter(t => t.start || t.end), keep = have.filter(t => !BARKER.terms.some(([a]) => a === t.start));
+    renderTerms(keep.concat(BARKER.terms.map(([start, end]) => ({start, end}))).sort((a, b) => (a.start || '9') < (b.start || '9') ? -1 : 1));
+    renderPh([...new Set(readPhRaw().filter(Boolean).concat(BARKER.holidays))].sort());
+    toast('Barker term dates added');
+  }
+  else if(act === 'addPh') openRange('ph');
+  else if(act === 'rmPh'){ const l = readPhRaw(); l.splice(Number(b.dataset.i), 1); renderPh(l); }
+  else if(act === 'addTerm') openRange('term');
+  else if(act === 'rmTerm'){ const l = readTermsRaw(); l.splice(Number(b.dataset.i), 1); renderTerms(l); }
+  else if(act === 'rgSave') saveRange();
+  else if(act === 'closeRange') rangeDlg.close();
+  else if(act === 'cropCancel') cropDone(false);
+  else if(act === 'cropUse') cropDone(true);
+  else if(act === 'cropReset') cropFit();
+  else if(act === 'cropIn' || act === 'cropOut'){ if(crop) cropZoomTo(crop.z * (act === 'cropIn' ? 1.15 : 1 / 1.15), cropBox.clientWidth / 2, cropBox.clientHeight / 2); }
+  else if(act === 'editCo'){ const c = company(cur); if(c) openCoEditor(c, false); }
   else if(act === 'fy' || act === 'openFY') openFY();
   else if(act === 'closeFY') fyDlg.close();
   else if(act === 'prevFY'){ fyYear--; renderFY(); fyDlg.scrollTop = 0; }
@@ -2746,7 +2995,7 @@ function exportWeek(ws){ openExport(ws); }
   let timer = null, fired = false, sx = 0, sy = 0;
   const cancel = () => { clearTimeout(timer); timer = null; panel.querySelectorAll('.holding').forEach(n => n.classList.remove('holding')); };
   panel.addEventListener('pointerdown', e => {
-    const wk = e.target.closest('[data-week]'); if(!wk) return;
+    const wk = e.target.closest('[data-week]'); if(!wk || isEmp(cur)) return;
     fired = false; sx = e.clientX; sy = e.clientY; wk.classList.add('holding');
     timer = setTimeout(() => { fired = true; cancel(); if(navigator.vibrate) navigator.vibrate(12); exportWeek(Number(wk.dataset.week)); }, 550);
   });
@@ -3095,6 +3344,92 @@ async function storeLogoBlob(blob, btn){
   }
   return {logo:null, logoData: await blobToDataUrl(blob)};
 }
+
+/* ---------- term dates and public holidays: tidy rows, edited with the calendar ---------- */
+const rangeDlg = $('#rangeDlg');
+let rg = null;
+const yFmt = new Intl.DateTimeFormat('en-AU', {day:'numeric', month:'short'});
+function rangeText(s, e){
+  const a = new Date(s), b = new Date(e);
+  return a.getFullYear() === b.getFullYear() ? `${yFmt.format(a)} – ${yFmt.format(b)}` : `${longFmt.format(a)} – ${longFmt.format(b)}`;
+}
+function renderTerms(list){
+  coEdit.terms = (list || []).filter(t => t && t.start && t.end).map(t => ({start:t.start, end:t.end})).sort((a, b) => a.start < b.start ? -1 : 1);
+  let html = '', yr = null, n = 0;
+  coEdit.terms.forEach((t, i) => {
+    const s = parseDate(t.start), e = parseDate(t.end), y = new Date(s).getFullYear();
+    if(y !== yr){ yr = y; n = 0; html += `<p class="ti-year">${y}</p>`; }
+    n++;
+    const wks = Math.max(1, Math.round((e - startOfWeek(s)) / (7 * 864e5)));
+    html += `<div class="swipe ti-sw" data-label="Delete"><button type="button" class="ti-main" data-term="${i}"><span class="tn">T${n}</span><span class="tx2"><span class="tr">${rangeText(s, e)}</span><span class="tw">Term ${n}, ${wks} weeks</span></span></button></div>`;
+  });
+  $('#termList').innerHTML = html || '<p class="empty" style="padding:8px 4px">No terms yet</p>';
+  const c = coEdit.terms.length; $('#termCnt').textContent = c ? `${c} ${c === 1 ? 'term' : 'terms'}` : 'None';
+}
+function readTermsRaw(){ return (coEdit.terms || []).slice(); }
+function readTerms(){ return readTermsRaw(); }
+function renderPh(list){
+  coEdit.holidays = [...new Set((list || []).filter(Boolean))].sort();
+  let html = '', yr = null;
+  coEdit.holidays.forEach((d, i) => {
+    const ms = parseDate(d), y = new Date(ms).getFullYear();
+    if(y !== yr){ yr = y; html += `<p class="ti-year">${y}</p>`; }
+    html += `<div class="swipe ti-sw" data-label="Delete"><button type="button" class="ti-main" data-ph="${i}"><span class="tr">${dayFmt.format(ms)}</span></button></div>`;
+  });
+  $('#phList').innerHTML = html || '<p class="empty" style="padding:8px 4px">None added</p>';
+  const c = coEdit.holidays.length; $('#phCnt').textContent = c ? String(c) : 'None';
+}
+function readPhRaw(){ return (coEdit.holidays || []).slice(); }
+function readPh(){ return readPhRaw(); }
+makeCal('calRS', () => rg ? rg.s : toDateInput(Date.now()), ds => { rg.s = ds; if(rg.mode === 'term' && rg.e < rg.s) rg.e = rg.s; closeRPicks(); paintRange(); if(rg.mode === 'term') openRPick('e'); }, () => new Set());
+makeCal('calRE', () => rg ? rg.e : toDateInput(Date.now()), ds => { rg.e = ds; if(rg.s > rg.e) rg.s = rg.e; closeRPicks(); paintRange(); }, () => new Set());
+function closeRPicks(){ ['calRS', 'calRE'].forEach(id => { $('#' + id).hidden = true; }); document.querySelectorAll('[data-rpick]').forEach(b => b.setAttribute('aria-expanded', 'false')); }
+function openRPick(w){ closeRPicks(); document.querySelector(`[data-rpick="${w}"]`).setAttribute('aria-expanded', 'true'); openCal(w === 's' ? 'calRS' : 'calRE'); }
+function paintRange(){
+  $('#rgS').textContent = longFmt.format(parseDate(rg.s)); $('#rgE').textContent = longFmt.format(parseDate(rg.e));
+  if(rg.mode === 'term'){ const w = Math.max(1, Math.round((parseDate(rg.e) - startOfWeek(parseDate(rg.s))) / (7 * 864e5))); $('#rgInfo').textContent = `${w} ${w === 1 ? 'week' : 'weeks'}`; }
+  else $('#rgInfo').textContent = '';
+}
+function openRange(mode, i){
+  if(mode === 'term'){
+    const terms = coEdit.terms || [], t = i != null ? terms[i] : null;
+    let s, e;
+    if(t){ s = t.start; e = t.end; }
+    else{
+      const lastT = terms[terms.length - 1], base = lastT ? addDays(parseDate(lastT.end), 17) : dayStart(Date.now());
+      s = toDateInput(startOfWeek(base)); e = toDateInput(addDays(parseDate(s), 9 * 7 + 4));
+    }
+    rg = {mode, i: i != null ? i : null, s, e};
+    $('#rgTitle').textContent = t ? 'Edit Term' : 'Add Term'; $('#rgEndWrap').hidden = false; $('#rgSLbl').firstChild.textContent = 'Start';
+  }else{
+    const d = i != null ? coEdit.holidays[i] : toDateInput(Date.now());
+    rg = {mode, i: i != null ? i : null, s: d, e: d};
+    $('#rgTitle').textContent = i != null ? 'Edit Public Holiday' : 'Add Public Holiday'; $('#rgEndWrap').hidden = true; $('#rgSLbl').firstChild.textContent = 'Date';
+  }
+  closeRPicks(); paintRange(); showSheet(rangeDlg); openRPick('s');
+}
+function saveRange(){
+  if(rg.mode === 'term'){
+    const l = readTermsRaw(), v = {start: rg.s, end: rg.e};
+    if(rg.i != null) l[rg.i] = v; else l.push(v);
+    renderTerms(l);
+  }else{
+    const l = readPhRaw();
+    if(rg.i != null) l[rg.i] = rg.s; else l.push(rg.s);
+    renderPh(l);
+  }
+  rangeDlg.close();
+}
+rangeDlg.addEventListener('click', e => { if(e.target === rangeDlg) rangeDlg.close(); });
+/* swipe a term or public holiday left to remove it (Undo puts it back) */
+swipeRows($('#termList'), '.ti-main', el => {
+  const before = readTermsRaw(), l = before.slice(); l.splice(Number(el.dataset.term), 1); renderTerms(l);
+  toastUndo('Term removed', () => renderTerms(before));
+});
+swipeRows($('#phList'), '.ti-main', el => {
+  const before = readPhRaw(), l = before.slice(); l.splice(Number(el.dataset.ph), 1); renderPh(l);
+  toastUndo('Public holiday removed', () => renderPh(before));
+});
 
 /* ---------- move a shift to another day: hold it, then drag onto the day ---------- */
 (() => {

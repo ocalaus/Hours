@@ -11,7 +11,7 @@
 <link rel="icon" href="icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Hours">
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
@@ -599,8 +599,8 @@ dialog{margin-bottom:calc(0px - var(--vgap,0px))}
 dialog:not(#weekDlg):not(#fyDlg){max-height:calc(100dvh + var(--vgap,0px) - env(safe-area-inset-top,0px) - 30px)!important}
 #weekDlg,#fyDlg{height:calc(100dvh + var(--vgap,0px))!important;margin-bottom:0!important}
 @media (display-mode: standalone){
-  .app{padding-top:calc(env(safe-area-inset-top,0px) + 8px)}
-  #weekDlg .wsheet-head,#fyDlg .wsheet-head{padding-top:calc(env(safe-area-inset-top,0px) + 16px)}
+  .app{padding-top:calc(max(env(safe-area-inset-top,0px), var(--top-min,0px)) + 8px)}
+  #weekDlg .wsheet-head,#fyDlg .wsheet-head{padding-top:calc(max(env(safe-area-inset-top,0px), var(--top-min,0px)) + 16px)}
 }
 .bank-card{margin-top:0}
 .bank-card .big{font-size:52px}
@@ -618,13 +618,12 @@ dialog{overflow-x:hidden}
   <div class="view" id="authView" hidden>
     <div class="auth">
       <h1>Hours</h1>
-      <p class="sub">Sign in to keep your hours safe and in sync across your devices.</p>
+      <p class="sub">Sign in to your account.</p>
       <form id="authForm" novalidate>
         <label>Email<input name="email" type="email" inputmode="email" autocomplete="username"></label>
         <label>Password<input name="password" type="password" autocomplete="current-password"></label>
         <p class="err" id="authErr" role="alert"></p>
         <button class="btn pri" type="submit" style="width:100%;margin-top:6px">Sign In</button>
-        <button class="btn glass" type="button" data-act="signUp" style="width:100%;margin-top:10px">Create Account</button>
         <button class="text-btn" type="button" data-act="resetPw" style="margin:14px auto 0;display:flex">Forgot password?</button>
       </form>
     </div>
@@ -1248,13 +1247,29 @@ function fitScreen(){
   document.documentElement.style.setProperty('--vgap', gap + 'px');
 }
 fitScreen();
+/* keyboard: iPhone slides the whole page up when you tap a field. Put it back when the field would be visible anyway,
+   and always once the keyboard closes, so nothing ends up stuck under the clock. */
+(function(){
+  const isField = el => el && el.matches && el.matches('input, textarea, select');
+  function settle(){
+    const vv = window.visualViewport, el = document.activeElement;
+    if(!window.scrollY && !(vv && vv.offsetTop)) return;
+    if(!isField(el)){ window.scrollTo(0, 0); return; }
+    const r = el.getBoundingClientRect(), visible = vv ? vv.height : innerHeight;
+    if(r.bottom + window.scrollY < visible - 16) window.scrollTo(0, 0);
+  }
+  addEventListener('focusin', () => { setTimeout(settle, 60); setTimeout(settle, 350); });
+  addEventListener('focusout', () => setTimeout(() => { if(!isField(document.activeElement)) window.scrollTo(0, 0); }, 120));
+  addEventListener('scroll', () => { if(window.scrollY && !isField(document.activeElement)) window.scrollTo(0, 0); }, {passive:true});
+  if(window.visualViewport){ visualViewport.addEventListener('resize', settle); visualViewport.addEventListener('scroll', settle); }
+})();
 [300, 1000, 2500].forEach(t => setTimeout(fitScreen, t));
 addEventListener('resize', fitScreen);
 addEventListener('pageshow', fitScreen);
 document.addEventListener('visibilitychange', () => { if(!document.hidden) setTimeout(fitScreen, 100); });
 addEventListener('orientationchange', () => setTimeout(fitScreen, 300));
 /* ---------- version and update check ---------- */
-const APP_VERSION = '1.81', APP_DATE = '10 Nov 2026';
+const APP_VERSION = '2.0', APP_DATE = '10 Nov 2026';
 function paintAbout(){
   fitScreen();
   $('#appVer').textContent = APP_VERSION;
@@ -2907,7 +2922,6 @@ document.addEventListener('click', async ev => {
   else if(act === 'myDetails') openMe();
   else if(act === 'history') openHist();
   else if(act === 'signOut'){ setDlg.close(); fbAuth.signOut(); }
-  else if(act === 'signUp') signUp();
   else if(act === 'resetPw') resetPw();
   else if(act === 'saveCfg') saveConfig();
   else if(act === 'exportBackup') exportBackup();
